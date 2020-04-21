@@ -5,7 +5,7 @@ const app = express();
 
 const HTTP_PORT = process.env.PORT || 8080;
 
-app.use(express.static(__dirname + '/dist/a4Project'));
+app.use(express.static(__dirname + '/dist/angular-practice-v1'));
 
 // PathLocationStrategy
 app.use((req, res) => {
