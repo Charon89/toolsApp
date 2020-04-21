@@ -1,0 +1,29 @@
+.container {
+  margin: 0 auto;
+  padding: 0;
+  /*background-color: rgba(43, 43, 43, 0.6);*/
+  background-image: linear-gradient(-90deg, transparent, rgb(43, 43, 43), transparent);
+  max-width: 1300px;
+}
+
+.container-columns {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  justify-items: center;
+  justify-self: center;
+}
+
+.footer-links a, .footer-contacts a, .footer-misc a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-links li, .footer-contacts li, .footer-misc li {
+  list-style-type: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}

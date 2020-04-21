@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Roboto Light", sans-serif;
+}
+
+body {
+  background-color: #515151;
+  background-image: url("src/assets/img/metal-wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-expansion-panel {
+  background-color: transparent;
+}
+
+.mat-expansion-panel-body {
+  padding-right: 25px !important;
+}
+
+.mat-expansion-panel-header {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+

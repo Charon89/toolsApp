@@ -1,0 +1,43 @@
+<div class = "container">
+  <h2>Send E-Mail</h2>
+  <p></p>
+  <div class = "container-contacts">
+    <form class = "emailForm" (ngSubmit) = "onSubmit()" [formGroup] = "emailForm">
+
+      <label>Full Name:</label>
+      <div *ngIf = "!emailForm.controls.name.valid && emailForm.controls.name.touched">
+        <small class = "text-danger">
+          <strong class = "warning">Warning:</strong> "Full Name" required.
+        </small>
+      </div>
+      <input formControlName = "name" required placeholder = "Your Name" type = "text">
+
+      <label>E-Mail:</label>
+      <input formControlName = "email" placeholder = "Your E-Mail" required type = "text">
+
+      <label>Address: (Optional)</label>
+      <input formControlName = "address" placeholder = "Your Address" type = "text">
+
+      <label>Postal Code: (Optional)</label>
+      <input formControlName = "postalCode" placeholder = "Your Postal Code" type = "text">
+
+      <label>City: (Optional)</label>
+      <input formControlName = "city" placeholder = "Your City" type = "text">
+
+      <label>Province: (Optional)</label>
+      <input formControlName = "province" placeholder = "Your Province" type = "text">
+
+
+      <label>Question or Concern:</label>
+      <textarea cols = "30" formControlName = "message" id = "" rows = "10" required = "">
+
+        </textarea>
+
+      <div>
+        <button type = "submit" [disabled] = "!emailForm.valid">SEND</button>
+        <button type = "reset" (click) = "resetForm()">RESET</button>
+      </div>
+    </form>
+  </div>
+</div>
+
