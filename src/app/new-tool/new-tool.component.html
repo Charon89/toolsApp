@@ -4,15 +4,22 @@
   <div class = "container-contacts">
     <form class = "newToolForm" (ngSubmit) = "onSubmit()" [formGroup] = "newToolForm">
 
-      <label>Title:</label>
-      <div *ngIf = "!newToolForm.controls.title.valid && newToolForm.controls.title.touched">
-        <small class = "text-danger">
-          <strong class = "warning">Warning:</strong> "Full Name" required.
-        </small>
-      </div>
+      <label>Title:
+        <div *ngIf = "!newToolForm.controls.title.valid && newToolForm.controls.title.touched" class = "tooltip">
+          <small class = "text-danger">
+            <strong class = "warning">Warning:</strong> Title must be entered
+          </small>
+        </div>
+      </label>
       <input formControlName = "title" required placeholder = "Tool title" type = "text">
 
-      <label>Category:</label>
+      <label>Category:
+        <div *ngIf = "!newToolForm.controls.category.valid && newToolForm.controls.category.touched" class = "tooltip">
+          <small class = "text-danger">
+            <strong class = "warning">Warning:</strong> Category must be entered
+          </small>
+        </div>
+      </label>
       <input formControlName = "category" required placeholder = "Tool category" type = "text">
 
       <label>Price:</label>
@@ -23,9 +30,9 @@
 
       <label for = "file">Select files:</label>
       <input type = "file" id = "file" name = "files" accept = "image/*"
-             multiple (change) = "fileEvent($event)">
+             multiple (change) = "fileEvent($event)" required>
 
-      <p *ngFor="let name of fileNames">{{name}}</p>
+      <p *ngFor = "let name of fileNames">{{name}}</p>
 
       <label>Description:</label>
       <textarea cols = "30" formControlName = "description" id = "" rows = "10" required = "">

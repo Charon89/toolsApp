@@ -66,8 +66,15 @@ button {
   float: right;
 }
 
+.text-danger{
+  display: inline;
+}
 .warning {
-  color: red;
+  display: inline;
+  color: orange;
+}
+.tooltip{
+  display: inline;
 }
 
 button:disabled {

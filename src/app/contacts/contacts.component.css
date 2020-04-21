@@ -64,3 +64,15 @@ button:disabled {
   color: #747474;
   cursor: default;
 }
+
+@media only screen and (max-width: 680px) {
+  .container {
+    min-width: 0;
+    width: 90%;
+  }
+
+  .container-contacts {
+    margin: 15px;
+  }
+
+}

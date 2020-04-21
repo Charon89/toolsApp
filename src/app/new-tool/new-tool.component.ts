@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ToolService} from '../tool.service';
 import {Tool} from '../tool';
+import {Router} from '@angular/router';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-new-tool',
@@ -15,29 +17,24 @@ export class NewToolComponent implements OnInit {
 
   newToolForm = this.fb.group({
     title: ['', Validators.required],
-    photos: ['', Validators.required],
+    photos: [''],
     description: ['', Validators.required],
     category: ['', Validators.required],
     price: ['', Validators.required],
     quantity: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private toolService: ToolService) {
+  constructor(private fb: FormBuilder, private toolService: ToolService, private route: Router) {
   }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    // this.toolService.newTool.
-    console.log('New tool created');
-    console.log(this.newToolForm.value);
-
-    this.newToolForm.reset();
+    this.toolService.newTool(this.tool).subscribe(() => this.route.navigate(['home']), error1 => console.log(error1), () => console.log('New tool created sucessfully'));
   }
 
   resetForm() {
-    console.log('E-Mail form reset');
     this.newToolForm.reset();
   }
 
