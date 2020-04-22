@@ -122,3 +122,13 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
+
+@media only screen and (max-width: 680px) {
+  .container {
+    min-width: 0;
+    width: 100%;
+  }
+  .btn-label{
+    display: none;
+  }
+}
