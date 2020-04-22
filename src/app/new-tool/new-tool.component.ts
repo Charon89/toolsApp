@@ -1,12 +1,7 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ToolService} from '../tool.service';
 import {Router} from '@angular/router';
-
-import {HttpEventType, HttpErrorResponse} from '@angular/common/http';
-import {of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-new-tool',
@@ -16,12 +11,11 @@ import {catchError, map} from 'rxjs/operators';
 export class NewToolComponent implements OnInit {
 
   fileNames: string[] = [];
-  @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
   photos = [];
 
   newToolForm = this.fb.group({
     title: ['', Validators.required],
-    photos: [''],
+    photos: [null],
     description: ['', Validators.required],
     category: ['', Validators.required],
     price: ['', Validators.required],
@@ -51,7 +45,7 @@ export class NewToolComponent implements OnInit {
     this.toolService.newTool(formData).subscribe(
       () => this.route.navigate(['home']),
       error1 => console.log(error1),
-      () => console.log('New tool created sucessfully'));
+      () => console.log('New tool created successfully'));
   }
 
   resetForm() {

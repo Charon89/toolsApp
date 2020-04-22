@@ -72,7 +72,17 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .example-element-description {
+  display: flex;
+  align-content: center;
+  align-items: center;
   padding: 16px;
+}
+
+.example-element-description img {
+  min-width: 80px;
+  max-width: 100px;
+  margin: 8px 8px 8px 0;
+  height: auto;
 }
 
 .example-element-description-attribution {
