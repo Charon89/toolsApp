@@ -1,10 +1,12 @@
 .dialog-container{
   display: flex !important;
   flex-direction: column;
+  text-align: center;
 justify-content: center;
   align-items: center;
 }
 .dialog-btn-container{
+  text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
