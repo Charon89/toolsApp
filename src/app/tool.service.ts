@@ -7,8 +7,8 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ToolService {
-  private toolsUrl = 'http://135.0.65.68:9122/tools';
-  //private toolsUrl = 'http://135.0.65.68:8877/tools';
+  //private toolsUrl = 'http://135.0.65.68:9122/tools';
+  private toolsUrl = 'https://gtatoolsapi.herokuapp.com/tools';
 
   constructor(private http: HttpClient) {
   }

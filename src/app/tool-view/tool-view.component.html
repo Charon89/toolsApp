@@ -3,13 +3,14 @@
     <h1>{{tool?.title}}</h1>
   </div>
   <div class = "container-contacts">
-    <div>
+    <div class="main-img">
       <img src = "{{tool.photos[0].photoLarge}}" alt = "">
     </div>
     <div>
       <img *ngFor = "let photo of tool?.photos" src = "{{photo.photoSmall}}" alt = "">
     </div>
   </div>
+
 
 </div>
 
