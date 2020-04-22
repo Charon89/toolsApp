@@ -4,8 +4,15 @@
 justify-content: center;
   align-items: center;
 }
+.dialog-btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .yes-dialog-btn {
   display: flex;
+  align-items: center;
+  justify-items: center;
   text-decoration: none;
   background-color: green;
   color: white;
@@ -23,7 +30,8 @@ justify-content: center;
 
 .no-dialog-btn {
   display: flex;
-
+  align-items: center;
+  justify-items: center;
   text-decoration: none;
   background-color: darkred;
   color: white;
@@ -34,4 +42,7 @@ justify-content: center;
   margin: 10px;
   float: right;
   transition: 0.4s;
+}
+.no-dialog-btn:hover{
+  background-color: red;
 }

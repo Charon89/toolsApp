@@ -1,11 +1,8 @@
 <div class = "container">
 
   <div class = "admin-tools">
-    <a class = "new-tool-btn" routerLink = "/admin/newTool">
-      <mat-icon>library_add</mat-icon>
-      <span class = "btn-label">&nbsp;New Tool</span></a>
 
-    <a class = "new-tool-btn" (click)="openDeleteAllDialog()">
+    <a class = "new-tool-btn" (click) = "openDeleteAllDialog()">
       <mat-icon>delete_forever</mat-icon>
       <span class = "btn-label">&nbsp;Delete ALL</span></a>
 
@@ -13,9 +10,13 @@
       <mat-icon>search</mat-icon>
       <span class = "btn-label">&nbsp;Search</span></a>
 
+    <a class = "new-tool-btn" routerLink = "/admin/newTool">
+      <mat-icon>library_add</mat-icon>
+      <span class = "btn-label">&nbsp;New Tool</span></a>
+
   </div>
 
-   <table mat-table
+  <table mat-table
          [dataSource] = "dataSource" multiTemplateDataRows
          class = "mat-elevation-z8">
 
@@ -35,7 +36,7 @@
         <!--          <mat-icon>delete_forever</mat-icon>-->
         <!--          <span class="btn-label">Delete</span>-->
         <!--        </button>-->
-        <button class = "table-btn" (click)="openDialog(element.title, element._id)">
+        <button class = "table-btn" (click) = "openDialog(element.title, element._id)">
           <mat-icon>delete</mat-icon>
           <span class = "btn-label">Delete</span>
         </button>

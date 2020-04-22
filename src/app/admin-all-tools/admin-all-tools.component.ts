@@ -4,12 +4,6 @@ import {ToolService} from '../tool.service';
 import {Tool} from '../tool';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-// export interface DialogData {
-//   id: string;
-//   title: string;
-//   confirm: boolean;
-// }
-
 @Component({
   selector: 'app-admin-all-tools',
   templateUrl: './admin-all-tools.component.html',
@@ -69,12 +63,11 @@ export class AdminAllToolsComponent implements OnInit {
 
       // Delete if ConfirmDeleteAll
       if (result.confirmDeleteAll === true) {
+        this.toolService.deleteAll().subscribe(() => this.toolService.getAllTools().subscribe(data => this.dataSource = data));
         console.log('All records deleted');
       }
     });
   }
-
-
 }
 
 // Delete ONE record

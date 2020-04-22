@@ -1,5 +1,6 @@
 <h4 mat-dialog-title>Do you want to delete {{data.objTitle}}</h4>
-<div mat-dialog-actions>
-  <button mat-button (click)="onYesClick()" class="yes-dialog-btn">Ok</button>
-  <button (click)="onNoClick()" class="no-dialog-btn">No Thanks</button>
+
+<div mat-dialog-actions class = "dialog-btn-container">
+  <button mat-button (click)="onYesClick()" class="yes-dialog-btn"><mat-icon>check</mat-icon> Yes</button>
+  <button (click)="onNoClick()" class="no-dialog-btn"><mat-icon>clear</mat-icon>No</button>
 </div>

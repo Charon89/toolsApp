@@ -29,4 +29,8 @@ export class ToolService {
     return this.http.delete<any>(`${this.toolsUrl}/${id}`);
   }
 
+  deleteAll(): Observable<any>{
+    return this.http.delete<any>(`${this.toolsUrl}`)
+  }
+
 }
