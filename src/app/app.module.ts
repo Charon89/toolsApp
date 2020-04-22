@@ -50,7 +50,8 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatProgressBarModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

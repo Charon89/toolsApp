@@ -3,6 +3,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ToolService} from '../tool.service';
 import {Tool} from '../tool';
 import {Router} from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @Component({

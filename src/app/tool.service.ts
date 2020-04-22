@@ -8,6 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ToolService {
   private toolsUrl = 'http://135.0.65.68:9122/tools';
+  //private toolsUrl = 'http://135.0.65.68:8877/tools';
 
   constructor(private http: HttpClient) {
   }
@@ -20,12 +21,11 @@ export class ToolService {
     return this.http.get<Tool>(`${this.toolsUrl}/${id}`);
   }
 
-  newTool(data: FormData): Observable<any>
-  {
+  newTool(data: FormData): Observable<any> {
     return this.http.post<any>(`${this.toolsUrl}`, data);
   }
 
-  deleteToolById(id: string): Observable<any>{
+  deleteToolById(id: string): Observable<any> {
     return this.http.delete<any>(`${this.toolsUrl}/${id}`);
   }
 

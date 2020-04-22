@@ -1,10 +1,22 @@
 .container {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 auto;
+  background-color: rgba(43, 43, 43, 0.6);
+  transition: 0.3s;
+  min-width: 475px;
   width: 90%;
   max-width: 1300px;
 }
 
+.admin-tools {
+  margin: auto;
+  width: 90%;
+  background-color: red;
+}
+
 .new-tool-btn {
+  display: flex;
   text-decoration: none;
   background-color: green;
   color: white;
@@ -12,9 +24,13 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 10px;
   float: right;
+  transition: 0.4s;
+}
+
+.new-tool-btn:hover {
+  background-color: #42A948;
 }
 
 .table-btn {
@@ -27,10 +43,28 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.table-btn:hover {
+  background-color: #42A948;
 }
 
 table {
-  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto 20px auto;
+  width: 90%;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.mat-cell:nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5) {
+  text-align: center;
+}
+.mat-cell:nth-child(1) {
+  text-align: left;
 }
 
 tr.example-detail-row {

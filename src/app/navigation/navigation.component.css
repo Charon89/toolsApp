@@ -16,7 +16,9 @@
   color: #fff;
 }
 
-.logo-container h3 {
+.logo-container h3, a {
+  color: #fff;
+  text-decoration: none;
   margin: auto auto;
   padding: 10px 20px;
 }
