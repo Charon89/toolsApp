@@ -8,7 +8,7 @@ import {Tool} from '../tool';
 })
 export class MainPageRecordComponent implements OnInit {
 
-  @Input() tool: Tool;
+  @Input() tool;
   constructor() { }
 
   ngOnInit(): void {

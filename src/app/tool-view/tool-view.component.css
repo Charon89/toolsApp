@@ -1,0 +1,29 @@
+.container {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
+  background-color: rgba(43, 43, 43, 0.6);
+  transition: 0.3s;
+  min-width: 475px;
+  width: 90%;
+  max-width: 1300px;
+}
+
+.container-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px;
+}
+
+
+@media only screen and (max-width: 680px) {
+  .container {
+    min-width: 0;
+    width: 90%;
+  }
+
+  .container-contacts {
+    margin: 15px;
+  }
+}

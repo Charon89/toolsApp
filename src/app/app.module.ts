@@ -28,6 +28,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ToolViewComponent } from './tool-view/tool-view.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatInputModule } from '@angular/material/input';
     AdminAllToolsComponent,
     AdminDeleteAllDialogComponent,
     AdminDeleteDialogComponent,
+    ToolViewComponent,
 
   ],
   imports: [
