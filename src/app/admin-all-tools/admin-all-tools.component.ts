@@ -1,10 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ToolService} from '../tool.service';
 import {Tool} from '../tool';
-import {Router} from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+// export interface DialogData {
+//   id: string;
+//   title: string;
+//   confirm: boolean;
+// }
 
 @Component({
   selector: 'app-admin-all-tools',
@@ -16,20 +20,107 @@ import {MatIconModule} from '@angular/material/icon';
       state('expanded', style({height: '*'})),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),]),]
 })
+
 export class AdminAllToolsComponent implements OnInit {
 
   dataSource: Tool[];
   columnsToDisplay = ['title', 'price', 'category', 'quantity', 'actionsColumn'];
   expandedElement: Tool | null;
 
-  constructor(private toolService: ToolService, private route: Router) {
+  confirm = false;
+  confirmDeleteAll = false;
+
+  constructor(private toolService: ToolService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.toolService.getAllTools().subscribe(data => this.dataSource = data);
+    this.toolService.getAllTools().subscribe(
+      data => this.dataSource = data);
   }
 
-  deleteTool(id) {
-    this.toolService.deleteToolById(id).subscribe(() => this.toolService.getAllTools().subscribe(data => this.dataSource = data));
+// Asking user to delete ONE by ID
+  openDialog(title, id): void {
+    const dialogRef = this.dialog.open(AdminDeleteDialogComponent, {
+      width: '300px',
+      data: {confirm: this.confirm, toolId: id, objTitle: title}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result.toolId);
+
+      // Delete record if true
+      if (result.confirm === true) {
+        this.toolService.deleteToolById(id).subscribe(() => this.toolService.getAllTools().subscribe(
+          data => this.dataSource = data));
+        console.log('Record deleted');
+      }
+    });
+  }
+
+  // Asking user to delete ALL
+  openDeleteAllDialog(): void {
+    const dialogRef = this.dialog.open(AdminDeleteAllDialogComponent, {
+      width: '300px',
+      data: {confirmDeleteAll: this.confirmDeleteAll}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result.confirmDeleteAll);
+
+      // Delete if ConfirmDeleteAll
+      if (result.confirmDeleteAll === true) {
+        console.log('All records deleted');
+      }
+    });
+  }
+
+
+}
+
+// Delete ONE record
+@Component({
+  selector: 'app-delete-dialog',
+  templateUrl: './deleteDialog.html',
+  styleUrls: ['./dialogs.css'],
+})
+export class AdminDeleteDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<AdminDeleteDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
+
+  onNoClick(): void {
+    this.data.confirm = false;
+    this.dialogRef.close(this.data);
+  }
+
+  onYesClick(): void {
+    this.data.confirm = true;
+    this.dialogRef.close(this.data);
   }
 }
+
+// Delete ALL records
+@Component({
+  selector: 'app-delete-all-dialog',
+  templateUrl: './admin-delete-all-dialog.html',
+  styleUrls: ['./dialogs.css'],
+})
+export class AdminDeleteAllDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<AdminDeleteAllDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
+
+  onNoClick(): void {
+    this.data.confirmDeleteAll = false;
+    this.dialogRef.close(this.data);
+  }
+
+  onYesClick(): void {
+    this.data.confirmDeleteAll = true;
+    this.dialogRef.close(this.data);
+  }
+}
+
+

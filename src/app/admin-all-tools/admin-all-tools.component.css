@@ -10,9 +10,12 @@
 }
 
 .admin-tools {
-  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  color: red;
   width: 90%;
-  background-color: red;
+
 }
 
 .new-tool-btn {

@@ -1,0 +1,37 @@
+.dialog-container{
+  display: flex !important;
+  flex-direction: column;
+justify-content: center;
+  align-items: center;
+}
+.yes-dialog-btn {
+  display: flex;
+  text-decoration: none;
+  background-color: green;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  float: right;
+  transition: 0.4s;
+}
+.yes-dialog-btn:hover {
+  background-color: #42A948;
+}
+
+.no-dialog-btn {
+  display: flex;
+
+  text-decoration: none;
+  background-color: darkred;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  float: right;
+  transition: 0.4s;
+}
