@@ -29,8 +29,8 @@
       <input formControlName = "quantity" required placeholder = "0" type = "number" min = "1">
 
       <label for = "file">Select files:</label>
-      <input type = "file" id = "file" name = "files" accept = "image/*"
-             multiple (change) = "fileEvent($event)" required>
+      <input type = "file" id = "file" name = "files" formControlName = "photos" accept = "image/*"
+             multiple (change) = "fileEvent($event)">
 
       <p *ngFor = "let name of fileNames">{{name}}</p>
 

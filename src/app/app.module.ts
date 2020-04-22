@@ -17,6 +17,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import {HttpClientModule} from '@angular/common/http';
 import { NewToolComponent } from './new-tool/new-tool.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
+import { AdminAllToolsComponent } from './admin-all-tools/admin-all-tools.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,9 @@ import { NewToolComponent } from './new-tool/new-tool.component';
     MainPageRecordComponent,
     CategoriesComponent,
     FooterComponent,
-    NewToolComponent
+    NewToolComponent,
+    NavigationComponent,
+    AdminAllToolsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +45,12 @@ import { NewToolComponent } from './new-tool/new-tool.component';
     BrowserAnimationsModule,
     MatExpansionModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

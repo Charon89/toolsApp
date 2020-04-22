@@ -9,7 +9,7 @@ import {ToolService} from '../tool.service';
 })
 export class HomeComponent implements OnInit {
 
-  tools: Tool[];
+  tools;
 
   constructor(private toolService: ToolService) { }
 

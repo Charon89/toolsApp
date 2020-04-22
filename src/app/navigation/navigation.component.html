@@ -1,0 +1,41 @@
+<div class = "nav-container">
+  <div class = "logo-container">
+    <h3>GTA Tools</h3>
+  </div>
+  <ul>
+    <li><a routerLink = "/home">Home</a></li>
+    <li><a routerLink = "/contacts">Contacts</a></li>
+    <li><a routerLink = "/about">About</a></li>
+    <li><a routerLink = "/admin">Admin</a></li>
+  </ul>
+  <div class = "search-container">
+    <input class = "search-input" type = "text" placeholder = "Search">
+    <button class = "btn-search">Search</button>
+  </div>
+</div>
+
+<div class = "nav-small">
+  <div class = "nav-small-logo">
+    <h3>GTA Tools</h3>
+  </div>
+  <button class = "nav-small-btn" mat-button [matMenuTriggerFor] = "menu">Menu</button>
+</div>
+
+
+<mat-menu #menu = "matMenu">
+  <button mat-menu-item routerLink = "/home">Home</button>
+  <button mat-menu-item routerLink = "/contacts">Contacts</button>
+  <button mat-menu-item routerLink = "/about">About</button>
+  <button mat-menu-item routerLink = "/admin">Admin</button>
+  <button mat-menu-item [matMenuTriggerFor] = "categories">Categories</button>
+</mat-menu>
+
+<mat-menu #categories = "matMenu">
+  <button mat-menu-item>Insects</button>
+  <button mat-menu-item>Molluscs</button>
+  <button mat-menu-item>Crustaceans</button>
+  <button mat-menu-item>Corals</button>
+  <button mat-menu-item>Arachnids</button>
+  <button mat-menu-item>Velvet worms</button>
+  <button mat-menu-item>Horseshoe crabs</button>
+</mat-menu>

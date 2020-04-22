@@ -9,7 +9,12 @@
   width: 90%;
   max-width: 1300px;
 }
-
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 .newToolForm {
   display: flex;
   flex-flow: column;

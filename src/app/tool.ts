@@ -1,4 +1,4 @@
-export class Tool {
+export interface Tool {
   id: string;
   title: string;
   photos: [{

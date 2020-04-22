@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ToolService} from '../tool.service';
-import {Tool} from '../tool';
 import {Router} from '@angular/router';
-import {error} from '@angular/compiler/src/util';
+
+import {HttpEventType, HttpErrorResponse} from '@angular/common/http';
+import {of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-new-tool',
@@ -13,7 +16,8 @@ import {error} from '@angular/compiler/src/util';
 export class NewToolComponent implements OnInit {
 
   fileNames: string[] = [];
-  tool = new Tool();
+  @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
+  photos = [];
 
   newToolForm = this.fb.group({
     title: ['', Validators.required],
@@ -31,7 +35,23 @@ export class NewToolComponent implements OnInit {
   }
 
   onSubmit() {
-    this.toolService.newTool(this.tool).subscribe(() => this.route.navigate(['home']), error1 => console.log(error1), () => console.log('New tool created sucessfully'));
+
+    // this.toolService.newTool(this.tool).subscribe(() => this.route.navigate(['home']), error1 => console.log(error1), () => console.log('New tool created sucessfully'));
+    const formData = new FormData();
+    formData.append('title', this.newToolForm.get('title').value);
+    formData.append('photos', this.newToolForm.get('photos').value);
+    formData.append('description', this.newToolForm.get('description').value);
+    formData.append('category', this.newToolForm.get('category').value);
+    formData.append('price', this.newToolForm.get('price').value);
+    formData.append('quantity', this.newToolForm.get('quantity').value);
+
+    console.log(this.newToolForm.get('title').value);
+    console.log(this.newToolForm.get('photos').value);
+
+    this.toolService.newTool(formData).subscribe(
+      () => this.route.navigate(['home']),
+      error1 => console.log(error1),
+      () => console.log('New tool created sucessfully'));
   }
 
   resetForm() {
@@ -42,6 +62,11 @@ export class NewToolComponent implements OnInit {
     const amount = (event.target as HTMLInputElement).files.length;
     for (let i = 0; i < amount; i++) {
       this.fileNames.push((event.target as HTMLInputElement).files[i].name);
+      const file = (event.target as HTMLInputElement).files[i];
+      this.newToolForm.patchValue({
+        photos: file
+      });
+      this.newToolForm.get('photos').updateValueAndValidity();
     }
   }
 
