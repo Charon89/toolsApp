@@ -41,7 +41,9 @@ export class EditToolComponent implements OnInit {
   onSubmit() {
     this.toolService.editTool(this.toolId, this.editTool.value).subscribe(
       () => {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin']).then(nav => {
+          console.log(`redirected ${nav}`);
+        }, error => console.log(error));
       },
       error => console.log(error),
       () => console.log('Tool updated'));
