@@ -17,7 +17,7 @@ export class ToolService {
     return this.http.get<Tool[]>(`${this.toolsUrl}`);
   }
 
-  getToolById(id): Observable<Tool> {
+  getToolById(id: string): Observable<Tool> {
     return this.http.get<Tool>(`${this.toolsUrl}/${id}`);
   }
 
@@ -29,8 +29,12 @@ export class ToolService {
     return this.http.delete<any>(`${this.toolsUrl}/${id}`);
   }
 
-  deleteAll(): Observable<any>{
-    return this.http.delete<any>(`${this.toolsUrl}`)
+  deleteAll(): Observable<any> {
+    return this.http.delete<any>(`${this.toolsUrl}`);
+  }
+
+  editTool(id: string, data: any): Observable<any> {
+    return this.http.patch(`${this.toolsUrl}/${id}`, data);
   }
 
 }

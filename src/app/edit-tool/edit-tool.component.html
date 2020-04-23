@@ -11,7 +11,7 @@
           </small>
         </div>
       </label>
-      <input formControlName = "title" required placeholder = "Tool title" type = "text" [(ngModel)]="tool.title">
+      <input formControlName = "title" required placeholder = "Tool title" type = "text">
 
       <label>Category:
         <div *ngIf = "!editTool.controls.category.valid && editTool.controls.category.touched" class = "tooltip">
@@ -33,10 +33,16 @@
       </textarea>
 
       <div>
-        <button type = "submit" [disabled] = "!editTool.valid">ADD</button>
+        <button type = "submit" [disabled] = "!editTool.valid">SAVE</button>
         <button type = "reset" (click) = "resetForm()">RESET</button>
+        <button type = "reset" routerLink="/admin">CANCEL</button>
       </div>
     </form>
+<!--    {{tool.title}} | {{editTool.controls.title.value}}<br>-->
+<!--    {{tool.category}}<br>-->
+<!--    {{tool.price}}<br>-->
+<!--    {{tool.quantity}}<br><br>-->
+<!--    {{tool.description}}-->
   </div>
 </div>
 
