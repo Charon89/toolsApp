@@ -1,8 +1,9 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .container {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -15,22 +16,47 @@
 }
 
 /*Price container*/
-.price-container{
+.price-container {
   width: 80%;
   margin: 30px auto 0 auto;
   color: #42A948;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.price-container h1{
+  margin: 0;
 }
 
+  /*Contact seller button*/
+button {
+  display: flex;
+  align-items: center;
+  background-color: green;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  float: right;
+  transition: 0.4s;
+}
+button:hover{
+  background-color: #42A948;
+}
 
- /*Title*/
-.header-container{
+/*Title*/
+.header-container {
   width: 80%;
   margin: 30px auto 0 auto;
   text-align: left;
 
 }
-.header-container h1{
+
+.header-container h1 {
   text-transform: uppercase;
   margin: 0;
 }
@@ -44,50 +70,52 @@
 }
 
 /*Large image*/
-.main-img-container{
+.main-img-container {
   width: 100%;
   text-align: center;
-  }
-.main-img-container img{
-  width: 70%;
-  /*margin: 20px;*/
+  overflow: hidden;
+}
+
+.main-img-container img {
+  object-fit: scale-down;
 }
 
 /*Small image*/
-.small-img-container{
+.small-img-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.small-img-container img{
+.small-img-container img {
   width: 10%;
   min-width: 50px;
   margin: 20px;
 }
 
 /*Description*/
-.details-container
-{
+.details-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 50px;
 }
-.tech-details-container{
+
+.tech-details-container {
   display: flex;
   justify-content: space-around;
   margin: 50px auto;
   color: #c5c5c5;
 }
+
 /*Views / date*/
 .tech-details-container p {
-display: flex;
+  display: flex;
   align-items: center;
 }
 
-mat-icon{
+mat-icon {
   cursor: pointer;
 }
 
@@ -102,16 +130,23 @@ mat-icon{
   }
 
   /*Large image*/
-  .main-img-container img{
+  .main-img-container img {
     width: 100%;
     /*margin: 20px;*/
   }
 
   /*Small image*/
-  .small-img-container img{
+  .small-img-container img {
     width: 15%;
     min-width: 50px;
     margin: 20px;
+  }
+/*Contact button re-size*/
+  button {
+    padding: 5px 10px;
+    margin: 0;
+    float: right;
+    transition: 0.4s;
   }
 
 }

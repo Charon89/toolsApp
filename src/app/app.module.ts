@@ -29,6 +29,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ToolViewComponent } from './tool-view/tool-view.component';
+import { EditToolComponent } from './edit-tool/edit-tool.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ToolViewComponent } from './tool-view/tool-view.component';
     AdminDeleteAllDialogComponent,
     AdminDeleteDialogComponent,
     ToolViewComponent,
+    EditToolComponent,
 
   ],
   imports: [

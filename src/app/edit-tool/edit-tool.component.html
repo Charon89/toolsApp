@@ -1,0 +1,42 @@
+<div class = "container">
+  <h2>Edit tool</h2>
+  <p></p>
+  <div class = "container-tool">
+    <form class = "editToolForm" (ngSubmit) = "onSubmit()" [formGroup] = "editTool">
+
+      <label>Title:
+        <div *ngIf = "!editTool.controls.title.valid && editTool.controls.title.touched" class = "tooltip">
+          <small class = "text-danger">
+            <strong class = "warning">Warning:</strong> Title must be entered
+          </small>
+        </div>
+      </label>
+      <input formControlName = "title" required placeholder = "Tool title" type = "text" [(ngModel)]="tool.title">
+
+      <label>Category:
+        <div *ngIf = "!editTool.controls.category.valid && editTool.controls.category.touched" class = "tooltip">
+          <small class = "text-danger">
+            <strong class = "warning">Warning:</strong> Category must be entered
+          </small>
+        </div>
+      </label>
+      <input formControlName = "category" required placeholder = "Tool category" type = "text">
+
+      <label>Price:</label>
+      <input formControlName = "price" required placeholder = "0" type = "number" min = "1">
+
+      <label>Quantity:</label>
+      <input formControlName = "quantity" required placeholder = "0" type = "number" min = "1">
+
+      <label>Description:</label>
+      <textarea cols = "30" formControlName = "description" id = "" rows = "10" required = "">
+      </textarea>
+
+      <div>
+        <button type = "submit" [disabled] = "!editTool.valid">ADD</button>
+        <button type = "reset" (click) = "resetForm()">RESET</button>
+      </div>
+    </form>
+  </div>
+</div>
+
