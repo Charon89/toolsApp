@@ -53,9 +53,7 @@
             <img *ngFor="let photo of element.photos" src = "{{photo.photoSmall}}" alt = "">
           </div>
 
-          <div class = "example-element-description">
-          {{element.description}}
-          </div>
+          <div class = "example-element-description" [innerHTML]="element.description"></div>
 
         </div>
       </td>

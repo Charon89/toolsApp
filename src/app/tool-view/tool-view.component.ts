@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToolService} from '../tool.service';
 import {ActivatedRoute} from '@angular/router';
 import {Tool} from '../tool';
@@ -11,9 +11,12 @@ import {Tool} from '../tool';
 export class ToolViewComponent implements OnInit {
 
   tool: any;
+  views = 0;
   toolSub: any;
+  index: number;
 
-  constructor(private toolService: ToolService, private route: ActivatedRoute) { }
+  constructor(private toolService: ToolService, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -21,8 +24,20 @@ export class ToolViewComponent implements OnInit {
         .getToolById(params._id)
         .subscribe(responseData => {
           this.tool = responseData;
+          this.views++;
+          this.index = 0;
         });
     });
+  }
+
+  nextImage() {
+    this.index < (this.tool.photos.length - 1) ? this.index++ : this.index;
+    console.log(this.index);
+  }
+
+  prevImage() {
+    this.index > 0 ? this.index-- : this.index;
+    console.log(this.index);
   }
 
 }
