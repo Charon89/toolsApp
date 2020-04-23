@@ -18,7 +18,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class AdminAllToolsComponent implements OnInit {
 
   dataSource: Tool[];
-  columnsToDisplay = ['title', 'price', 'category', 'quantity', 'actionsColumn'];
+  columnsToDisplay = ['title', 'price', 'quantity', 'actionsColumn'];
   expandedElement: Tool | null;
 
   confirm = false;

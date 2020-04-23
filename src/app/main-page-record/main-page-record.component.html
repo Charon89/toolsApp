@@ -1,17 +1,28 @@
-<div class = "container">
+<div class = "container" [routerLink] = "['/tool', tool._id]">
+
   <div>
-    <a [routerLink]="['/tool', tool._id]"><img src = "{{tool.photos[0].photoSmall}}" alt = ""></a>
+    <a [routerLink] = "['/tool', tool._id]"><img src = "{{tool.photos[0].photoSmall}}" alt = ""></a>
   </div>
+
   <div class = "record-details">
+
     <div>
-      <p style = "float: right">{{tool.postDate | date: 'medium'}}</p>
+      <h1>{{tool.title}}</h1>
     </div>
-    <h2><a [routerLink]="['/tool', tool._id]">{{tool.title}}</a></h2>
-    <H4>Price: {{tool.price}}$</H4>
-    <H3><span [ngStyle] = "{'color': tool.quantity > 2 ? 'green' : 'red'}">{{tool.quantity}}</span> left</H3>
-    <p>
+
+    <div>
+      <H1>${{tool.price}}</H1>
+    </div>
+
+    <div>
+      <H3><span [ngStyle] = "{'color': tool.quantity > 2 ? 'green' : 'red'}">{{tool.quantity}}</span> in stock</H3>
+      {{tool.postDate | date: 'medium'}}
+    </div>
+
+
+    <div class = "description">
       {{tool.description}}
-    </p>
-    <span class = "details-link"><a [routerLink]="['/tool', tool._id]">Details...</a></span>
+    </div>
+    <!--    <span class = "details-link"><a [routerLink] = "['/tool', tool._id]">Details...</a></span>-->
   </div>
 </div>
