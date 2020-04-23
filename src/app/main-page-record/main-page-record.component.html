@@ -20,9 +20,7 @@
     </div>
 
 
-    <div class = "description">
-      {{tool.description}}
-    </div>
+    <div class = "description" [innerHTML]="tool.description"></div>
     <!--    <span class = "details-link"><a [routerLink] = "['/tool', tool._id]">Details...</a></span>-->
   </div>
 </div>
