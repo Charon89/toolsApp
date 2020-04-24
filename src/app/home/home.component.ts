@@ -9,16 +9,21 @@ import {ToolService} from '../tool.service';
 })
 export class HomeComponent implements OnInit {
 
-  tools;
+  limit = 5;
+  skip = 0;
+
+  tools: any;
+
 
   constructor(private toolService: ToolService) { }
 
   ngOnInit(): void {
-    this.getAllTools();
+    this.toolService.getToolsPage(this.limit, 0).subscribe(tools => this.tools = tools);
   }
 
-  getAllTools(): void{
-    this.toolService.getAllTools().subscribe(tools => this.tools = tools);
+  receiveLimit(num){
+    this.limit = num[0];
+    this.skip = num[1];
+    this.toolService.getToolsPage(this.limit, this.skip).subscribe(tools => this.tools = tools);
   }
-
 }

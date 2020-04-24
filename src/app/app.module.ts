@@ -30,6 +30,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ToolViewComponent } from './tool-view/tool-view.component';
 import { EditToolComponent } from './edit-tool/edit-tool.component';
+import { PagingComponent } from './paging/paging.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EditToolComponent } from './edit-tool/edit-tool.component';
     AdminDeleteDialogComponent,
     ToolViewComponent,
     EditToolComponent,
+    PagingComponent,
 
   ],
   imports: [
