@@ -9,7 +9,6 @@ import {ToolService} from '../tool.service';
 export class PagingComponent implements OnInit {
 
   @Output() newLimit = new EventEmitter<number[]>();
-  //@Output() newSkip = new EventEmitter<number>();
 
   @Input() limit: number;
   @Input() skip: number;
@@ -18,19 +17,20 @@ export class PagingComponent implements OnInit {
 
   page = 1;
 
-  constructor(private toolServise: ToolService) {
+  constructor(private toolService: ToolService) {
   }
 
   ngOnInit(): void {
-    this.toolServise.getAllTools().subscribe(tools => this.toolsAmount = tools.length);
+    this.page = 1;
+    this.toolService.getAllTools().subscribe(tools => this.toolsAmount = tools.length);
   }
 
-  nextpage() {
-    if (this.page < Math.ceil(this.toolsAmount / this.limit)) {
-      ++this.page;
-      this.newLimit.emit([this.limit, this.skip + this.limit]);
-    }
-    console.log(this.page + ' | ' + Math.ceil(this.toolsAmount / this.limit));
+  nextPage() {
+      if (this.page < Math.ceil(this.toolsAmount / this.limit)) {
+        ++this.page;
+        this.newLimit.emit([this.limit, this.skip + this.limit]);
+      }
+      console.log(this.page + ' | ' + Math.ceil(this.toolsAmount / this.limit));
   }
 
   prevPage() {

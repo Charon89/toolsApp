@@ -1,35 +1,39 @@
 <div class = "container">
   <h3>Categories</h3>
   <hr>
-  <ul *ngFor="let categorie of categories">
-    <li><a href = "#">{{categorie}}</a></li>
+  <ul>
+    <li><a [routerLink] = "['/home']">All tools</a></li>
+  </ul>
+  <mat-divider></mat-divider>
+  <ul  *ngFor = "let categorie of categories">
+    <li ><a [routerLink] = "['/home']" [queryParams] = "{ category: categorie }">{{categorie}}</a></li>
     <mat-divider></mat-divider>
-<!--    <mat-accordion>-->
-<!--      <mat-expansion-panel>-->
-<!--        <mat-expansion-panel-header>-->
-<!--          <span class="drop-head">Outdoor Equipment</span>-->
-<!--        </mat-expansion-panel-header>-->
-<!--        <ul>-->
-<!--          <li><a href = "">Blowers</a></li>-->
-<!--          <li><a href = "">Power Cutters</a></li>-->
-<!--          <li><a href = "">Chainsaws</a></li>-->
-<!--          <li><a href = "">Lawn Movers</a></li>-->
-<!--        </ul>-->
-<!--      </mat-expansion-panel>-->
-<!--      <mat-divider></mat-divider>-->
-<!--      <mat-expansion-panel>-->
-<!--        <mat-expansion-panel-header>-->
-<!--          <span class="drop-head">Fasteners</span>-->
-<!--        </mat-expansion-panel-header>-->
+    <!--    <mat-accordion>-->
+    <!--      <mat-expansion-panel>-->
+    <!--        <mat-expansion-panel-header>-->
+    <!--          <span class="drop-head">Outdoor Equipment</span>-->
+    <!--        </mat-expansion-panel-header>-->
+    <!--        <ul>-->
+    <!--          <li><a href = "">Blowers</a></li>-->
+    <!--          <li><a href = "">Power Cutters</a></li>-->
+    <!--          <li><a href = "">Chainsaws</a></li>-->
+    <!--          <li><a href = "">Lawn Movers</a></li>-->
+    <!--        </ul>-->
+    <!--      </mat-expansion-panel>-->
+    <!--      <mat-divider></mat-divider>-->
+    <!--      <mat-expansion-panel>-->
+    <!--        <mat-expansion-panel-header>-->
+    <!--          <span class="drop-head">Fasteners</span>-->
+    <!--        </mat-expansion-panel-header>-->
 
-<!--        <ul>-->
-<!--          <li><a href = "">Tape</a></li>-->
-<!--          <li><a href = "">Nails</a></li>-->
-<!--          <li><a href = "">Screws</a></li>-->
-<!--          <li><a href = "">Staples</a></li>-->
-<!--        </ul>-->
-<!--      </mat-expansion-panel>-->
-<!--    </mat-accordion>-->
+    <!--        <ul>-->
+    <!--          <li><a href = "">Tape</a></li>-->
+    <!--          <li><a href = "">Nails</a></li>-->
+    <!--          <li><a href = "">Screws</a></li>-->
+    <!--          <li><a href = "">Staples</a></li>-->
+    <!--        </ul>-->
+    <!--      </mat-expansion-panel>-->
+    <!--    </mat-accordion>-->
   </ul>
 </div>
 

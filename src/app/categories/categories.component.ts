@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToolService} from '../tool.service';
 
 @Component({
@@ -8,12 +8,12 @@ import {ToolService} from '../tool.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  categories: object;
+  categories = [];
 
-  constructor(private toolService: ToolService) { }
+  constructor(private toolService: ToolService) {
+  }
 
   ngOnInit(): void {
     this.toolService.getCategory().subscribe(categories => this.categories = categories);
-    console.log(this.categories);
   }
 }
