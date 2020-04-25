@@ -16,6 +16,7 @@ export class EditToolComponent implements OnInit {
   toolId: string;
   confirm = false;
   tool: any;
+  newPhotos: any[] = [];
 
   editTool = this.formBuilder.group({
     title: ['', Validators.required],
@@ -57,6 +58,28 @@ export class EditToolComponent implements OnInit {
       },
       error => console.log(error),
       () => console.log('Tool updated'));
+  }
+
+  onPhotoSubmit() {
+    const formData = new FormData();
+    this.newPhotos.forEach((photo) => {
+      formData.append('photos', photo);
+    });
+
+    this.toolService.addPhotos(this.toolId, formData).subscribe(() => {
+      this.toolService.getToolById(this.toolId).subscribe(newTool => {
+          this.tool = newTool;
+        }
+      );
+    });
+  }
+
+  fileEvent(event?: Event) {
+    const length = (event.target as HTMLInputElement).files.length;
+    for (let i = 0; i < length; i++) {
+      this.newPhotos[i] = (event.target as HTMLInputElement).files[i];
+      console.log(this.newPhotos[i]);
+    }
   }
 
   resetForm() {
