@@ -65,20 +65,19 @@ export class EditToolComponent implements OnInit {
     this.newPhotos.forEach((photo) => {
       formData.append('photos', photo);
     });
-
     this.toolService.addPhotos(this.toolId, formData).subscribe(() => {
       this.toolService.getToolById(this.toolId).subscribe(newTool => {
           this.tool = newTool;
+          this.newPhotos = null;
         }
       );
-    });
+    }, error => console.log(error), () => console.log('Photo(s) uploaded'));
   }
 
   fileEvent(event?: Event) {
     const length = (event.target as HTMLInputElement).files.length;
     for (let i = 0; i < length; i++) {
       this.newPhotos[i] = (event.target as HTMLInputElement).files[i];
-      console.log(this.newPhotos[i]);
     }
   }
 
