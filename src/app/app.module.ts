@@ -10,6 +10,9 @@ import {MainPageRecordComponent} from './main-page-record/main-page-record.compo
 import {CategoriesComponent} from './categories/categories.component';
 import {FooterComponent} from './footer/footer.component';
 import {AdminAllToolsComponent, AdminDeleteAllDialogComponent, AdminDeleteDialogComponent} from './admin-all-tools/admin-all-tools.component';
+import { ToolViewComponent } from './tool-view/tool-view.component';
+import {DeleteImageDialogComponent, EditToolComponent} from './edit-tool/edit-tool.component';
+import { PagingComponent } from './paging/paging.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -28,9 +31,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ToolViewComponent } from './tool-view/tool-view.component';
-import { EditToolComponent } from './edit-tool/edit-tool.component';
-import { PagingComponent } from './paging/paging.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -49,7 +52,7 @@ import { PagingComponent } from './paging/paging.component';
     ToolViewComponent,
     EditToolComponent,
     PagingComponent,
-
+    DeleteImageDialogComponent
   ],
   imports: [
     BrowserModule,

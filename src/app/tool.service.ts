@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Tool} from './tool';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -40,6 +40,18 @@ export class ToolService {
     return this.http.post<any>(`${this.toolsUrl}/tools`, data);
   }
 
+  editTool(id: string, data: any): Observable<any> {
+    return this.http.patch(`${this.toolsUrl}/tools/${id}`, data);
+  }
+
+  addPhotos(id: string, photos: any): Observable<any> {
+    return this.http.post(`${this.toolsUrl}/tools/photos/${id}`, photos);
+  }
+
+  getCategory(): Observable<any> {
+    return this.http.get(`${this.toolsUrl}/tools?field=category`);
+  }
+
   deleteToolById(id: string): Observable<any> {
     return this.http.delete<any>(`${this.toolsUrl}/tools/${id}`);
   }
@@ -48,12 +60,8 @@ export class ToolService {
     return this.http.delete<any>(`${this.toolsUrl}/tools`);
   }
 
-  editTool(id: string, data: any): Observable<any> {
-    return this.http.patch(`${this.toolsUrl}/tools/${id}`, data);
-  }
-
-  getCategory(): Observable<any> {
-    return this.http.get(`${this.toolsUrl}/tools?field=category`);
+  deleteImage(imageID): Observable<any> {
+    return this.http.delete<any>(`${this.toolsUrl}/tools/photos/${imageID}`);
   }
 
 }

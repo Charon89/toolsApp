@@ -23,20 +23,21 @@ a {
 }
 
 /*Image container*/
-.container > div:nth-child(1){
+.container > div:nth-child(1) {
   display: flex;
   justify-content: center;
   align-content: center;
   width: 100%;
 
 }
+
 .container > div img {
   display: inline-block;
   width: 90%;
   margin: 10px;
 }
 
-.record-details > div{
+.record-details > div {
   display: inline-block;
 }
 
@@ -47,10 +48,12 @@ h1 {
   white-space: nowrap;
   overflow: hidden;
 }
-.container div div:nth-child(1){
- width: 80%;
+
+.container div div:nth-child(1) {
+  width: 60%;
 }
-.container div div:nth-child(1) h1{
+
+.container div div:nth-child(1) h1 {
   text-transform: uppercase;
   font-size: 1.1em;
   text-align: left;
@@ -62,8 +65,9 @@ h1 {
 
 /*Price*/
 
-.record-details div:nth-child(2){
-  width: 20%;
+.record-details div:nth-child(2) {
+  width: 15%;
+  float: right;
 }
 
 .container div div:nth-child(2) h1 {
@@ -73,7 +77,7 @@ h1 {
 }
 
 /*Amount / Date*/
-.container div div:nth-child(4){
+.container div div:nth-child(4) {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -81,13 +85,14 @@ h1 {
 }
 
 .record-details {
+  min-width: 0;
   padding: 15px;
   margin: auto 0;
   font-size: 1em;
   font-weight: normal;
 }
 
-.description{
+.description {
   max-height: 40px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -99,6 +104,7 @@ h1 {
     grid-template-columns: 1fr;
     min-width: 0;
   }
+
   .container > div img {
     display: inline-block;
     width: 50%;
@@ -114,10 +120,8 @@ h1 {
     overflow: initial;
     font-size: 1.1rem;
   }
-  /*.container div div:nth-child(1){*/
-  /*  width: 80%;*/
-  /*}*/
-  .container div div:nth-child(1) h1{
+
+  .container div div:nth-child(1) h1 {
     text-transform: uppercase;
     text-align: left;
     white-space: initial;
@@ -125,16 +129,10 @@ h1 {
     text-overflow: ellipsis;
     margin: auto 0;
   }
-  /*.container > div:nth-child(1){*/
-  /*  display: flex;*/
-  /*  justify-content: center;*/
-  /*  align-content: center;*/
-  /*  width: 100%;*/
 
-  /*}*/
-  /*.container > div img {*/
-  /*  display: inline-block;*/
-  /*  width: 90%;*/
-  /*  margin: 10px;*/
-  /*}*/
+  .container > div img {
+    object-fit: scale-down;
+    margin: 10px;
+  }
+
 }

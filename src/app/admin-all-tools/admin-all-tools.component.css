@@ -38,8 +38,8 @@
 }
 
 .table-btn {
-  width: 70px;
-  padding: 5px 15px;
+  width: 50px;
+  /*padding: 5px 15px;*/
   margin: 15px;
   text-decoration: none;
   background-color: green;
@@ -57,7 +57,7 @@
 table {
   border: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 auto 20px auto;
-  width: 90%;
+  width: 98%;
 }
 
 .mat-header-cell {

@@ -1,9 +1,27 @@
 <div class = "container">
   <h2>Edit tool</h2>
-  <p></p>
-  <div class = "container-tool">
-    <form class = "editToolForm" (ngSubmit) = "onSubmit()" [formGroup] = "editTool">
 
+  <div class = "container-tool">
+    <div>
+      <div class = "delete-photo-container">
+        <img *ngFor = "let photo of tool?.photos" src = "{{photo.photoSmall}}" alt = "" (click) = "openDialog(photo)">
+        <div class = "delete-photo-break"></div>
+        <div >
+          <p>click on image tp delete</p>
+        </div>
+      </div>
+    </div>
+    <div class = "add-photo-container">
+      <form>
+        <input type = "file" name = "" id = "" multiple>
+        <button type = "button">
+          <mat-icon>add_photo_alternate</mat-icon>
+          Add photos
+        </button>
+      </form>
+    </div>
+    <hr>
+    <form class = "editToolForm" (ngSubmit) = "onDataSubmit()" [formGroup] = "editTool">
       <label>Title:
         <div *ngIf = "!editTool.controls.title.valid && editTool.controls.title.touched" class = "tooltip">
           <small class = "text-danger">
@@ -33,16 +51,24 @@
       </textarea>
 
       <div>
-        <button type = "submit" [disabled] = "!editTool.valid">SAVE</button>
-        <button type = "reset" (click) = "resetForm()">RESET</button>
-        <button type = "reset" routerLink="/admin">CANCEL</button>
+        <button type = "submit" [disabled] = "!editTool.valid">
+          <mat-icon>
+            save
+          </mat-icon>
+          SAVE
+        </button>
+        <button type = "reset" (click) = "resetForm()">
+          <mat-icon>delete_sweep</mat-icon>
+          CLEAR
+        </button>
+        <button type = "button" routerLink = "/admin"><mat-icon>clear</mat-icon> CANCEL</button>
       </div>
     </form>
-<!--    {{tool.title}} | {{editTool.controls.title.value}}<br>-->
-<!--    {{tool.category}}<br>-->
-<!--    {{tool.price}}<br>-->
-<!--    {{tool.quantity}}<br><br>-->
-<!--    {{tool.description}}-->
+    <!--    {{tool.title}} | {{editTool.controls.title.value}}<br>-->
+    <!--    {{tool.category}}<br>-->
+    <!--    {{tool.price}}<br>-->
+    <!--    {{tool.quantity}}<br><br>-->
+    <!--    {{tool.description}}-->
   </div>
 </div>
 

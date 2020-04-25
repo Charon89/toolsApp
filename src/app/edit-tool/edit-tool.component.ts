@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToolService} from '../tool.service';
 import {FormBuilder, Validators} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {stringify} from 'querystring';
+
 
 @Component({
   selector: 'app-edit-tool',
@@ -11,6 +14,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class EditToolComponent implements OnInit {
 
   toolId: string;
+  confirm = false;
   tool: any;
 
   editTool = this.formBuilder.group({
@@ -21,7 +25,13 @@ export class EditToolComponent implements OnInit {
     description: ['', Validators.required]
   });
 
-  constructor(private activatedRoute: ActivatedRoute, private toolService: ToolService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private toolService: ToolService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -38,7 +48,7 @@ export class EditToolComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onDataSubmit() {
     this.toolService.editTool(this.toolId, this.editTool.value).subscribe(
       () => {
         this.router.navigate(['/admin']).then(nav => {
@@ -53,4 +63,52 @@ export class EditToolComponent implements OnInit {
     this.editTool.reset();
   }
 
+// Asking user to delete ONE image by ID
+  openDialog(photoObj): void {
+    const dialogRef = this.dialog.open(DeleteImageDialogComponent, {
+      width: '300px',
+      data: {confirm: this.confirm, photoObj}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(this.confirm + ' ' + stringify(result.photoObj));
+
+      // Delete record if true
+      if (result.confirm === true) {
+        this.deleteImage(photoObj._id);
+        console.log('Photo deleted');
+      }
+    });
+  }
+
+  deleteImage(photo) {
+    this.toolService.deleteImage(photo).subscribe(() => {
+      this.toolService.getToolById(this.toolId).subscribe(edited => this.tool = edited);
+    });
+    console.log(photo);
+  }
+
+}
+
+// Delete ONE image
+@Component({
+  selector: 'app-delete-image-dialog',
+  templateUrl: './delete-image-dialog-component.html',
+  styleUrls: ['./dialog.css'],
+})
+export class DeleteImageDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<DeleteImageDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
+
+  onNoClick(): void {
+    this.data.confirm = false;
+    this.dialogRef.close(this.data);
+  }
+
+  onYesClick(): void {
+    this.data.confirm = true;
+    this.dialogRef.close(this.data);
+  }
 }

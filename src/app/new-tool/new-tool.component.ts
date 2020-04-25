@@ -29,8 +29,6 @@ export class NewToolComponent implements OnInit {
   }
 
   onSubmit() {
-
-    // this.toolService.newTool(this.tool).subscribe(() => this.route.navigate(['home']), error1 => console.log(error1), () => console.log('New tool created sucessfully'));
     const formData = new FormData();
     formData.append('title', this.newToolForm.get('title').value);
 
@@ -60,10 +58,6 @@ export class NewToolComponent implements OnInit {
     for (let i = 0; i < amount; i++) {
       this.fileNames.push((event.target as HTMLInputElement).files[i].name);
       this.photosArray[i] = (event.target as HTMLInputElement).files[i];
-      // this.newToolForm.patchValue({
-      //   photos: this.photosArray
-      //
-      // })
 
       this.newToolForm.get('photos').updateValueAndValidity();
       console.log(this.photosArray[i]);
