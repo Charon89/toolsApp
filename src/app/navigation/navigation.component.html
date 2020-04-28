@@ -15,23 +15,23 @@
   </div>
 </div>
 
-<div class = "nav-small">
-  <div class = "nav-small-logo">
-    <a routerLink = "/home"><h3>GTA Tools</h3></a>
-  </div>
-  <button class = "nav-small-btn" mat-button [matMenuTriggerFor] = "menu">Menu</button>
-</div>
+<!--<div class = "nav-small">-->
+<!--  <div class = "nav-small-logo">-->
+<!--    <a routerLink = "/home"><h3>GTA Tools</h3></a>-->
+<!--  </div>-->
+<!--  <button class = "nav-small-btn" mat-button [matMenuTriggerFor] = "menu">Menu</button>-->
+<!--</div>-->
 
 
-<mat-menu #menu = "matMenu">
-  <button mat-menu-item routerLink = "/home">Home</button>
-  <button mat-menu-item routerLink = "/contacts">Contacts</button>
-  <button mat-menu-item routerLink = "/about">About</button>
-  <button mat-menu-item routerLink = "/admin">Admin</button>
-  <button mat-menu-item [matMenuTriggerFor] = "categories">Categories</button>
-</mat-menu>
+<!--<mat-menu #menu = "matMenu">-->
+<!--  <button mat-menu-item routerLink = "/home">Home</button>-->
+<!--  <button mat-menu-item routerLink = "/contacts">Contacts</button>-->
+<!--  <button mat-menu-item routerLink = "/about">About</button>-->
+<!--  <button mat-menu-item routerLink = "/admin">Admin</button>-->
+<!--  <button mat-menu-item [matMenuTriggerFor] = "categories">Categories</button>-->
+<!--</mat-menu>-->
 
-<mat-menu #categories = "matMenu" >
-  <a *ngFor = "let categorie of categories" [routerLink] = "['/home']" [queryParams] = "{ category: categorie }">{{categorie}}</a>
-</mat-menu>
+<!--<mat-menu #categories = "matMenu" >-->
+<!--  <a *ngFor = "let categorie of categories" [routerLink] = "['/home']" [queryParams] = "{ category: categorie }">{{categorie}}</a>-->
+<!--</mat-menu>-->
 

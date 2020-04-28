@@ -90,18 +90,20 @@ li a:hover {
     margin: 0 5px;
     padding: 0;
   }
-  /*li:nth-last-of-type(2){flex-grow: 3;}*/
-  /*li:nth-last-of-type(4){flex-grow: 3;}*/
-  /*li:nth-last-of-type(5){flex-grow: 3;}*/
-  /*li:nth-last-of-type(6){flex-grow: 3;}*/
 
-  /*.nav-small {*/
-  /*  display: flex;*/
-  /*  justify-content: space-around;*/
-  /*  align-items: center;*/
-  /*  margin: 20px auto;*/
-  /*  width: 90%;*/
-  /*}*/
+  li {
+    float: initial;
+  }
+
+  li a {
+    cursor: pointer;
+    color: white;
+    padding: 14px 10px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+  }
+
 
   .nav-small-logo h3 {
     margin: auto auto;
