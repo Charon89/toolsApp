@@ -3,6 +3,7 @@ import {Tool} from './tool';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
+import {InterceptTokenService} from './intercept-token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {AuthService} from './auth.service';
 export class ToolService {
   private toolsUrl = 'https://gtatoolsapi.herokuapp.com';
 
-  constructor(private http: HttpClient, private auth: AuthService) {
+  constructor(private http: HttpClient, private auth: AuthService, private intercept: InterceptTokenService) {
   }
 
   getToolsPage(limit, skip, category): Observable<any> {
@@ -62,9 +63,11 @@ export class ToolService {
   }
 
   deleteImage(imageID): Observable<any> {
-    return this.http.delete<any>(`${this.toolsUrl}/tools/photos/${imageID}`, this.auth.getToken());
+    return this.http.delete<any>(`${this.toolsUrl}/tools/photos/${imageID}`);
   }
 
-
+  // deleteImage(imageID): Observable<any> {
+  //   return this.intercept.intercept(this.http.delete<any>(`${this.toolsUrl}/tools/photos/${imageID}`));
+  // }
 
 }

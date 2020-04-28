@@ -85,7 +85,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        authScheme: 'JWT'
+        authScheme: 'Bearer'
       }
     })
 

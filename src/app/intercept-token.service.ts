@@ -14,7 +14,7 @@ export class InterceptTokenService {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-        Authorization: `JWT ${this.a.getToken()}`
+        Authorization: `Bearer ${this.a.getToken()}`
       }
     });
     return next.handle(request);

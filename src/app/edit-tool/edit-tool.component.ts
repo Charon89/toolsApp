@@ -52,9 +52,7 @@ export class EditToolComponent implements OnInit {
   onDataSubmit() {
     this.toolService.editTool(this.toolId, this.editTool.value).subscribe(
       () => {
-        this.router.navigate(['/admin']).then(nav => {
-          console.log(`redirected ${nav}`);
-        }, error => console.log(error));
+        this.router.navigate(['/admin']);
       },
       error => console.log(error),
       () => console.log('Tool updated'));
@@ -93,14 +91,11 @@ export class EditToolComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.confirm + ' ' + stringify(result.photoObj));
-
       // Delete record if true
       if (result.confirm === true) {
         this.deleteImage(photoObj._id);
-        console.log('Photo deleted');
       }
-    });
+    }, error => console.log(error), () => console.log('Photo deleted...'));
   }
 
   deleteImage(photo) {
