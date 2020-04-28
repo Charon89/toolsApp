@@ -5,8 +5,9 @@
   <ul>
     <li><a routerLink = "/home">Home</a></li>
     <li><a routerLink = "/contacts">Contacts</a></li>
-    <li><a routerLink = "/about">About</a></li>
-    <li><a routerLink = "/admin">Admin</a></li>
+    <li *ngIf="!(token)"><a (click)="openDialog()">Login</a></li>
+    <li *ngIf="token" routerLinkActive="active"><a routerLink = "/admin">User: {{user?.username}}</a></li>
+    <li *ngIf="token" routerLinkActive="active" (click)="logout()"><a><span>Log out</span></a></li>
   </ul>
   <div class = "search-container">
     <input class = "search-input" type = "text" placeholder = "Search">
@@ -30,12 +31,7 @@
   <button mat-menu-item [matMenuTriggerFor] = "categories">Categories</button>
 </mat-menu>
 
-<mat-menu #categories = "matMenu">
-  <button mat-menu-item>Drills</button>
-  <button mat-menu-item>Jig Saw</button>
-  <button mat-menu-item>Grinders</button>
-  <button mat-menu-item>Hammer Drills</button>
-  <button mat-menu-item>Blowers</button>
-  <button mat-menu-item>Circular Saw</button>
-  <button mat-menu-item>Jobsite Storage</button>
+<mat-menu #categories = "matMenu" >
+  <a *ngFor = "let categorie of categories" [routerLink] = "['/home']" [queryParams] = "{ category: categorie }">{{categorie}}</a>
 </mat-menu>
+

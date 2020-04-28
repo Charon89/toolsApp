@@ -118,7 +118,7 @@ h1 {
     /* BOTH of the following are required for text-overflow */
     white-space: initial;
     overflow: initial;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .container div div:nth-child(1) h1 {
@@ -133,6 +133,12 @@ h1 {
   .container > div img {
     object-fit: scale-down;
     margin: 10px;
+  }
+
+  /*Price*/
+  .record-details div:nth-child(2) {
+    width: 20%;
+    float: right;
   }
 
 }

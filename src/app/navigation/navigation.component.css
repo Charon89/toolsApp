@@ -32,6 +32,7 @@ li {
 }
 
 li a {
+  cursor: pointer;
   color: white;
   padding: 14px 20px;
   display: block;
@@ -79,16 +80,28 @@ li a:hover {
 @media only screen and (max-width: 680px) {
 
   .nav-container {
-    display: none;
-  }
-
-  .nav-small {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px auto;
-    width: 90%;
+    flex-direction: column;
   }
+  ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 5px;
+    padding: 0;
+  }
+  /*li:nth-last-of-type(2){flex-grow: 3;}*/
+  /*li:nth-last-of-type(4){flex-grow: 3;}*/
+  /*li:nth-last-of-type(5){flex-grow: 3;}*/
+  /*li:nth-last-of-type(6){flex-grow: 3;}*/
+
+  /*.nav-small {*/
+  /*  display: flex;*/
+  /*  justify-content: space-around;*/
+  /*  align-items: center;*/
+  /*  margin: 20px auto;*/
+  /*  width: 90%;*/
+  /*}*/
 
   .nav-small-logo h3 {
     margin: auto auto;

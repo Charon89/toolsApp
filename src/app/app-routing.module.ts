@@ -7,6 +7,7 @@ import {NewToolComponent} from './new-tool/new-tool.component';
 import {AdminAllToolsComponent} from './admin-all-tools/admin-all-tools.component';
 import {ToolViewComponent} from './tool-view/tool-view.component';
 import {EditToolComponent} from './edit-tool/edit-tool.component';
+import {GuardAuthService} from './guard-auth.service';
 
 const routes: Routes = [
   {path: 'contacts', component: ContactsComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'admin/tool/:id', component: EditToolComponent},
   {path: 'tool/:_id', component: ToolViewComponent},
   {path: 'admin/newTool', component: NewToolComponent},
-  {path: 'admin', component: AdminAllToolsComponent},
+  {path: 'admin', component: AdminAllToolsComponent, canActivate: [GuardAuthService]},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -9,19 +9,23 @@ import {AboutComponent} from './about/about.component';
 import {MainPageRecordComponent} from './main-page-record/main-page-record.component';
 import {CategoriesComponent} from './categories/categories.component';
 import {FooterComponent} from './footer/footer.component';
-import {AdminAllToolsComponent, AdminDeleteAllDialogComponent, AdminDeleteDialogComponent} from './admin-all-tools/admin-all-tools.component';
-import { ToolViewComponent } from './tool-view/tool-view.component';
+import {
+  AdminAllToolsComponent,
+  AdminDeleteAllDialogComponent,
+  AdminDeleteDialogComponent
+} from './admin-all-tools/admin-all-tools.component';
+import {ToolViewComponent} from './tool-view/tool-view.component';
 import {DeleteImageDialogComponent, EditToolComponent} from './edit-tool/edit-tool.component';
-import { PagingComponent } from './paging/paging.component';
+import {PagingComponent} from './paging/paging.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NewToolComponent} from './new-tool/new-tool.component';
-import {NavigationComponent} from './navigation/navigation.component';
+import {LoginComponent, NavigationComponent} from './navigation/navigation.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -30,10 +34,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import {MatInputModule} from '@angular/material/input';
+import {InterceptTokenService} from './intercept-token.service';
+import {JwtModule} from '@auth0/angular-jwt';
 
-
-
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -52,7 +59,8 @@ import { MatInputModule } from '@angular/material/input';
     ToolViewComponent,
     EditToolComponent,
     PagingComponent,
-    DeleteImageDialogComponent
+    DeleteImageDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -74,8 +82,19 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
 
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        authScheme: 'JWT'
+      }
+    })
+
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptTokenService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
