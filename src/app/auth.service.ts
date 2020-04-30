@@ -24,6 +24,8 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    // const token = localStorage.getItem('token')
+    // return this.http.post(`${this.toolsUrl}/users/logout`, {token});
   }
 
   public getToken(): any {
@@ -37,15 +39,16 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    //return !!token; UNCOMMENT AFTER TEST
-    if (token) {
-      console.log('Token exists');
-      return true;
-    } else {
-      console.log('No token');
-      return false;
-    }
+    return !!localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
+    // return !!token; // UNCOMMENT AFTER TEST
+    // if (token) {
+    //   console.log('Token exists');
+    //   return true;
+    // } else {
+    //   console.log('No token');
+    //   return false;
+    // }
   }
 
 }

@@ -47,6 +47,37 @@ button {
 button:hover{
   background-color: #42A948;
 }
+button:disabled {
+  background-color: rgba(0, 54, 0, 0.7);
+  color: #747474;
+  cursor: default;
+}
+
+/* Contact Form*/
+.contact-container{
+  width: 80%;
+  margin: 30px auto 0 auto;
+  overflow: hidden;
+}
+.contact-form{
+  display: flex;
+  flex-direction: column;
+}
+input[type=text], input[type=email], textarea {
+  margin-top: 6px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: none;
+  background-color: #c5c5c5;
+  border-radius: 5px;
+  resize: vertical;
+}
+.ng-valid[required], .ng-valid.required, .ng-valid.minLength {
+  border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}
 
 /*Title*/
 .header-container {
@@ -150,5 +181,9 @@ mat-icon {
     float: right;
     transition: 0.4s;
   }
-
+  h1 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin: 0;
+  }
 }

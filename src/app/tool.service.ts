@@ -11,21 +11,17 @@ import {InterceptTokenService} from './intercept-token.service';
 export class ToolService {
   private toolsUrl = 'https://gtatoolsapi.herokuapp.com';
 
-  constructor(private http: HttpClient, private auth: AuthService, private intercept: InterceptTokenService) {
+  constructor(private http: HttpClient, private auth: AuthService) {
   }
 
   getToolsPage(limit, skip, category): Observable<any> {
     if (category) {
-      console.log('Service: Limit and Skip and Category');
       return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}&category=${category}`);
     } else if (limit && skip) {
-      console.log('Service: Limit and Skip');
       return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}`);
     } else if (limit) {
-      console.log('Service: Limit');
       return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}`);
     } else {
-      console.log('Service: Else');
       return this.http.get(`${this.toolsUrl}/tools?limit=2&skip=0`);
     }
   }
@@ -65,9 +61,4 @@ export class ToolService {
   deleteImage(imageID): Observable<any> {
     return this.http.delete<any>(`${this.toolsUrl}/tools/photos/${imageID}`);
   }
-
-  // deleteImage(imageID): Observable<any> {
-  //   return this.intercept.intercept(this.http.delete<any>(`${this.toolsUrl}/tools/photos/${imageID}`));
-  // }
-
 }

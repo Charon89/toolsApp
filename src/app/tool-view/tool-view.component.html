@@ -6,9 +6,26 @@
 
   <div class = "price-container">
     <h1>${{tool?.price}} CAD</h1>
+    <button (click) = "toggleContact()">
+      <mat-icon>contact_mail</mat-icon> &nbsp;Contact seller
+    </button>
+  </div>
 
-    <button routerLink="/contacts"><mat-icon>contact_mail</mat-icon> &nbsp;Contact seller</button>
-
+  <div class = "contact-container" [@expandContact] = "isOpen ? 'openContactContainer' : 'closeContactContainer'">
+    <form action = "" [formGroup] = "emailForm" class = "contact-form" (ngSubmit)="sendMail()">
+      <!-- [@expandContact]="isOpen ? 'expanded' : 'collapsed'" -->
+      <label>Your name</label>
+      <input formControlName = "name" type = "text" name = "name" required = "required">
+      <label>Your email</label>
+      <input formControlName = "email" type = "email" name = "email" required = "required">
+      <label>Your message</label>
+      <textarea cols = "30" formControlName = "message" rows = "10" required = "required"></textarea>
+      <div>
+        <button type="submit" [disabled] = "!emailForm.valid">
+          <mat-icon>send</mat-icon>&nbsp; Send mail
+        </button>
+      </div>
+    </form>
   </div>
 
   <div class = "images-container">
@@ -37,7 +54,7 @@
       Posted on: {{tool?.postDate | date: 'short'}}</p>
     <p>
       <mat-icon>visibility</mat-icon>
-      Views: {{views}}</p>
+      Views: {{tool?.views}}</p>
   </div>
 
 </div>

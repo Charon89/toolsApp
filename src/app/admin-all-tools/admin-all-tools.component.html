@@ -27,9 +27,9 @@
 
     <ng-container matColumnDef = "actionsColumn">
       <th mat-header-cell *matHeaderCellDef> action</th>
-      <td mat-cell *matCellDef = "let element" class="action">
+      <td mat-cell *matCellDef = "let element" class = "action">
 
-        <button class = "table-btn" routerLink="/admin/tool/{{element._id}}">
+        <button class = "table-btn" routerLink = "/admin/tool/{{element._id}}">
           <mat-icon>edit</mat-icon>
           <span class = "btn-label">Edit</span>
         </button>
@@ -49,10 +49,10 @@
         <div class = "example-element-detail" [@detailExpand] = "element == expandedElement ? 'expanded' : 'collapsed'">
 
           <div class = "example-element-img">
-            <img *ngFor="let photo of element.photos" src = "{{photo.photoSmall}}" alt = "">
+            <img *ngFor = "let photo of element.photos" src = "{{photo.photoSmall}}" alt = "">
           </div>
 
-          <div class = "example-element-description" [innerHTML]="element.description"></div>
+          <div class = "example-element-description" [innerHTML] = "element.description"></div>
 
         </div>
       </td>

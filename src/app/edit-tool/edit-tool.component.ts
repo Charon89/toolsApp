@@ -104,7 +104,6 @@ export class EditToolComponent implements OnInit {
     });
     console.log(photo);
   }
-
 }
 
 // Delete ONE image

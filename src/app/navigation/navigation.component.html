@@ -6,7 +6,7 @@
     <li><a routerLink = "/home">Home</a></li>
     <li><a routerLink = "/contacts">Contacts</a></li>
     <li *ngIf="!(token)"><a (click)="openDialog()">Login</a></li>
-    <li *ngIf="token" routerLinkActive="active"><a routerLink = "/admin">User: {{user?.username}}</a></li>
+    <li *ngIf="token" routerLinkActive="active"><a *ngIf="user" routerLink = "/admin">User: {{user?.username}}</a></li>
     <li *ngIf="token" routerLinkActive="active" (click)="logout()"><a><span>Log out</span></a></li>
   </ul>
   <div class = "search-container">

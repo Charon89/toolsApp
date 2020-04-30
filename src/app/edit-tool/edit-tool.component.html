@@ -30,7 +30,7 @@
         </div>
       </label>
       <input formControlName = "title" required placeholder = "Tool title" type = "text">
-
+      {{tool.title}}
       <label>Category:
         <div *ngIf = "!editTool.controls.category.valid && editTool.controls.category.touched" class = "tooltip">
           <small class = "text-danger">

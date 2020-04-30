@@ -5,7 +5,6 @@ import {AuthService} from '../auth.service';
 import {NavigationStart, Router} from '@angular/router';
 import {ToolService} from '../tool.service';
 
-
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -13,21 +12,24 @@ import {ToolService} from '../tool.service';
 })
 
 export class NavigationComponent implements OnInit {
-  user: any;
-  username;
+  user: any = {
+    token: '',
+    username: 'xXx',
+  };
   public token: any;
   categories = [];
+
   constructor(private dialog: MatDialog, private router: Router, private auth: AuthService, private toolService: ToolService) {
   }
 
 
   ngOnInit(): void {
     this.toolService.getCategory().subscribe(cat => this.categories = cat);
-    console.log(this.categories[0])
     this.router.events.subscribe((event) => {
+      this.user.token = localStorage.getItem('token');
+      this.user.username = localStorage.getItem('username');
       if (event instanceof NavigationStart) {
         this.token = this.auth.readToken();
-        this.user = localStorage;
       }
     }, error => console.log(error), () => console.log('Complete'));
   }
@@ -39,7 +41,7 @@ export class NavigationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.user = result;
+      // this.user = result;
     });
   }
 
@@ -62,14 +64,14 @@ export class NavigationComponent implements OnInit {
           <br>
           <input type = "text" name = "text" formControlName = "username" required = "required">
         </div>
+        <br>
         <label>Password:</label>
         <div class = "form-field">
-          <br>
           <input name = "password" formControlName = "password"
-                 type = "password" required>
+                 type = "password" autocomplete = "on" required>
         </div>
         <div class = "form-buttons">
-          <button class = "button button-login" (keydown) = "login()"
+          <button class = "button button-login" (keydown.enter) = "login()"
                   (click) = "login()">Login
           </button>
           <button class = "button button-cancel"
@@ -103,9 +105,10 @@ export class LoginComponent {
     this.authService.login(user.username, user.password)
       .subscribe(
         token => {
-          localStorage.setItem('token', token.token), localStorage.setItem('username', token.user.username), localStorage.setItem('fullToken', token);
+          localStorage.setItem('token', token.token);
+          localStorage.setItem('username', token.user.username);
           this.dialogRef.close();
-          this.router.navigate(['../admin']);
+          this.router.navigate(['/admin']);
         },
         error => console.error(error.message),
         () => console.log('Logged in'));

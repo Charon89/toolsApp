@@ -2,7 +2,7 @@
   <h2>Send E-Mail</h2>
   <p></p>
   <div class = "container-contacts">
-    <form class = "emailForm" (ngSubmit) = "onSubmit()" [formGroup] = "emailForm">
+    <form class = "emailForm" (ngSubmit) = "onSubmit()" [formGroup] = "emailForm" >
 
       <label>Full Name:</label>
       <div *ngIf = "!emailForm.controls.name.valid && emailForm.controls.name.touched">
@@ -26,7 +26,6 @@
 
       <label>Province: (Optional)</label>
       <input formControlName = "province" placeholder = "Your Province" type = "text">
-
 
       <label>Question or Concern:</label>
       <textarea cols = "30" formControlName = "message" id = "" rows = "10" required = "">

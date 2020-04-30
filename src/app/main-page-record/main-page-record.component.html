@@ -1,7 +1,9 @@
 <div class = "container" [routerLink] = "['/tool', tool._id]">
 
   <div>
-    <img src = "{{tool.photos[0].photoSmall}}" alt = "">
+    <img
+      src = "{{tool.photos[0].photoSmall}}"
+      alt = "{{tool.photos[0].photoSmall}}">
   </div>
 
   <div class = "record-details">
@@ -16,11 +18,11 @@
     <hr>
     <div>
       <H3><span [ngStyle] = "{'color': tool.quantity > 2 ? 'green' : 'red'}">{{tool.quantity}}</span> in stock</H3>
-       {{tool.postDate | date: 'mediumDate'}}
+      {{tool.postDate | date: 'mediumDate'}}
     </div>
 
 
-    <div class = "description" [innerHTML]="tool.description"></div>
+    <div class = "description" [innerHTML] = "tool.description"></div>
     <!--    <span class = "details-link"><a [routerLink] = "['/tool', tool._id]">Details...</a></span>-->
   </div>
 </div>
