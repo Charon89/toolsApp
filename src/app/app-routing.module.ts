@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'home', component: HomeComponent},
   {path: 'admin/tool/:id', component: EditToolComponent, canActivate: [GuardAuthService]},
-  {path: 'tool/:_id', component: ToolViewComponent, canActivate: [GuardAuthService]},
+  {path: 'tool/:_id', component: ToolViewComponent},
   {path: 'admin/newTool', component: NewToolComponent, canActivate: [GuardAuthService]},
   {path: 'admin', component: AdminAllToolsComponent, canActivate: [GuardAuthService]},
   {path: '', redirectTo: '/home', pathMatch: 'full'}

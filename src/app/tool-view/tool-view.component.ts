@@ -56,7 +56,6 @@ export class ToolViewComponent implements OnInit {
         });
     });
     this.toolService.editTool(this.tool?._id, this.tool);
-    this.emailForm.valueChanges.subscribe(value => console.log(value));
   }
 
   toggleContact() {
