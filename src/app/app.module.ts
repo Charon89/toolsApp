@@ -26,15 +26,18 @@ import {MatDividerModule} from '@angular/material/divider';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NewToolComponent} from './new-tool/new-tool.component';
 import {LoginComponent, NavigationComponent} from './navigation/navigation.component';
+
+
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
-
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 import {InterceptTokenService} from './intercept-token.service';
 import {JwtModule} from '@auth0/angular-jwt';
 
@@ -81,6 +84,7 @@ export function tokenGetter() {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
 
     JwtModule.forRoot({
       config: {

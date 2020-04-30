@@ -56,26 +56,22 @@ export class ToolViewComponent implements OnInit {
         });
     });
     this.toolService.editTool(this.tool?._id, this.tool);
-   // this.onChanges();
+    this.emailForm.valueChanges.subscribe(value => console.log(value));
   }
 
-  toggleContact(){
+  toggleContact() {
     this.isOpen = !this.isOpen;
   }
 
-  // onChanges() {
-  //   this.emailForm.valueChanges.pipe(distinctUntilChanged()).subscribe(() => {
-  //   });
-  //  }
-
-  sendMail(){
-    console.log(this.emailForm.value)
+  sendMail() {
+    console.log(this.emailForm.value);
   }
 
   nextImage() {
     this.index < (this.tool.photos.length - 1) ? (this.index++) : this.index;
     console.log(this.index);
   }
+
 
   prevImage() {
     this.index > 0 ? (this.index--) : this.index;
