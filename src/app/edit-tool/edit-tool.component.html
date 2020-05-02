@@ -13,7 +13,7 @@
     </div>
     <div class = "add-photo-container">
       <form (ngSubmit)="onPhotoSubmit()">
-        <input type = "file" name = "" id = "" multiple (change)="fileEvent($event)" accept = "image/*">
+        <input #inputPhoto type = "file" name = "" id = "" multiple (change)="fileEvent($event)" accept = "image/*">
         <button type = "submit">
           <mat-icon>add_photo_alternate</mat-icon>
           Add photos
@@ -30,7 +30,6 @@
         </div>
       </label>
       <input formControlName = "title" required placeholder = "Tool title" type = "text">
-      {{tool.title}}
       <label>Category:
         <div *ngIf = "!editTool.controls.category.valid && editTool.controls.category.touched" class = "tooltip">
           <small class = "text-danger">

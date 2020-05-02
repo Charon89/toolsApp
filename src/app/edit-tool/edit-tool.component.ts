@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToolService} from '../tool.service';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -13,6 +13,8 @@ import {stringify} from 'querystring';
 })
 export class EditToolComponent implements OnInit {
 
+  @ViewChild('inputPhoto')
+  myInputVariable: ElementRef;
   toolId: string;
   confirm = false;
   tool: any;
@@ -70,6 +72,7 @@ export class EditToolComponent implements OnInit {
         }
       );
     }, error => console.log(error), () => console.log('Photo(s) uploaded'));
+    this.myInputVariable.nativeElement.value = '';
   }
 
   fileEvent(event?: Event) {

@@ -24,6 +24,28 @@ mat-icon {
   padding: 0;
 }
 
+.pages{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+span{
+  font-weight: 900;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.active{
+  border-bottom : 2px solid green;
+  padding : 10px;
+}
+
+.not-active{
+  border-bottom : 2px solid black;
+  padding : 10px;
+  cursor: pointer;
+}
+
 /*mat-icon:hover{*/
 /*  background-color: rgba(197, 197, 197, 0.35);*/
 /*font-size: 1.5rem;*/

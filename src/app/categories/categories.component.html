@@ -2,7 +2,7 @@
   <h3>Categories</h3>
   <hr>
   <ul>
-    <li><a [routerLink] = "['/home']">All tools</a></li>
+    <li><a [routerLink] = "['/home']" (click)="reload()">All tools</a></li>
   </ul>
   <mat-divider></mat-divider>
   <ul  *ngFor = "let categorie of categories">

@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  limit = 5;
+  limit = 3;
   skip = 0;
   category: string;
   tools: any;
@@ -23,13 +23,14 @@ export class HomeComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params.category) {
         this.category = params.category;
-        console.log('Init with category: ' + this.category);
-        this.toolService.getToolsPage(this.limit, 0, this.category).subscribe(tools => this.tools = tools);
+        this.toolService.getToolsPage(this.category, this.limit).subscribe(tools => this.tools = tools);
 
+      } else if (params.limit || params.skip) {
+        this.category = null;
+        this.toolService.getToolsPage(this.category, params.limit, params.skip).subscribe(tools => this.tools = tools);
       } else {
         this.category = null;
-        this.toolService.getToolsPage(this.limit, 0, this.category).subscribe(tools => this.tools = tools);
-        console.log('Init without category');
+        this.toolService.getToolsPage(this.category, this.limit, 0).subscribe(tools => this.tools = tools);
       }
     });
   }
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPage(num) {
-    return this.toolService.getToolsPage(num[0], num[1], this.category).subscribe(data => {
+    return this.toolService.getToolsPage(this.category, num[0], num[1],).subscribe(data => {
       if (data.length > 0) {
         this.limit = num[0];
         this.skip = num[1];

@@ -1,4 +1,4 @@
 <div class = "container">
   <app-main-page-record *ngFor="let tool of tools" [tool]="tool"></app-main-page-record>
-  <app-paging (newLimit)="receiveLimit($event)" [skip]="skip" [limit]="limit" ></app-paging>
+  <app-paging (newLimit)="receiveLimit($event)" [skip]="skip" [limit]="limit" [category]="category"></app-paging>
 </div>

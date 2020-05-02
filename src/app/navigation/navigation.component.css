@@ -82,6 +82,7 @@ li a:hover {
   .nav-container {
     display: flex;
     flex-direction: column;
+    justify-self: center;
   }
   ul{
     display: flex;

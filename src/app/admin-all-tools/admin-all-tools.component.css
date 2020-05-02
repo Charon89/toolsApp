@@ -126,7 +126,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-img {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;

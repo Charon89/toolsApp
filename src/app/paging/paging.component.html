@@ -1,5 +1,8 @@
 <div class = "paging">
-  <mat-icon (click)="prevPage()">arrow_back_ios</mat-icon>
-  <p>Page: {{page}}</p>
-  <mat-icon (click)="nextPage()">arrow_forward_ios</mat-icon>
+  <mat-icon (click) = "prevPage()">arrow_back_ios</mat-icon>
+  <!--  <p>Page: {{page}} of {{totalPages}}</p>-->
+  <div class="pages" >
+    <span (click)="goToPage(page)" *ngFor = "let page of totalPages" [ngClass]="(page == selectedPage) ? 'active' : 'not-active'">&nbsp;{{page}}</span>
+  </div>
+  <mat-icon (click) = "nextPage()" >arrow_forward_ios</mat-icon>
 </div>
