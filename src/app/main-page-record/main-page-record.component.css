@@ -111,7 +111,13 @@ h1 {
   }
 
   .container {
+    display: grid;
+    grid-template-columns: 30% 1fr;
     min-width: 0;
+  }
+
+  .container div:nth-child(1) {
+    margin: 10px;
   }
 
   .container > div img {
@@ -129,13 +135,6 @@ h1 {
   }
 
   /*Title*/
-  h1 {
-    width: 100%;
-    /* BOTH of the following are required for text-overflow */
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
   .container div div:nth-child(1) {
     width: 100%;
   }
@@ -143,24 +142,20 @@ h1 {
   .container div div:nth-child(1) h1 {
     font-size: 1em;
     line-height: 1.2em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: auto 0;
+    margin: 0;
   }
 
   /*Price*/
   .record-details div:nth-child(2) {
     grid-row: 1;
     justify-self: right;
-    width: 15%;
-    float: right;
+    margin: 0 20px;
+    width: 100%;
   }
 
   .container div div:nth-child(2) h1 {
     color: #42A948;
     font-size: 1.2em;
-    text-align: right;
-    margin: auto 0;
     width: 100%;
   }
 
