@@ -124,6 +124,7 @@ input[type=text], input[type=email], textarea {
   width: 10%;
   min-width: 50px;
   margin: 20px;
+  cursor: pointer;
 }
 
 /*Description*/

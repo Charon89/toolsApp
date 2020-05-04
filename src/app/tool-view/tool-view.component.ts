@@ -21,7 +21,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class ToolViewComponent implements OnInit {
 
   tool: any;
-  views = 0;
   index: number;
   isOpen = false;
 
@@ -34,12 +33,10 @@ export class ToolViewComponent implements OnInit {
   ngOnInit(): void {
 
     this.emailForm = this.fb.group({
-      title: [''],
-      price: [''],
-
-      name: ['', Validators.required],
+      toolid: [''],
       email: ['', Validators.required],
-      message: ['', Validators.required]
+      name: ['', Validators.required],
+      text: ['', Validators.required]
     });
 
     this.route.params.subscribe(params => {
@@ -50,30 +47,37 @@ export class ToolViewComponent implements OnInit {
           this.tool.views++;
           this.index = 0;
           this.emailForm.patchValue({
-            title: this.tool.title,
-            price: this.tool.price
+            toolid: this.tool._id
           });
         });
     });
     this.toolService.editTool(this.tool?._id, this.tool);
   }
 
+  // Contact seller form opener
   toggleContact() {
     this.isOpen = !this.isOpen;
   }
 
-  sendMail() {
-    console.log(this.emailForm.value);
+  // Get index of photo to enlarge
+  enlargePhoto(index) {
+    this.index = index;
   }
 
+  // Send e-mail to the customer
+  sendMail() {
+    this.toolService.contactSeller(this.emailForm.value);
+    console.log(this.emailForm.value);
+    this.emailForm.reset();
+  }
+
+  // Go to next photo
   nextImage() {
     this.index < (this.tool.photos.length - 1) ? (this.index++) : this.index;
-    console.log(this.index);
   }
 
-
+  // Go to previous photo
   prevImage() {
     this.index > 0 ? (this.index--) : this.index;
-    console.log(this.index);
   }
 }

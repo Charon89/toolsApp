@@ -13,13 +13,12 @@
 
   <div class = "contact-container" [@expandContact] = "isOpen ? 'openContactContainer' : 'closeContactContainer'">
     <form action = "" [formGroup] = "emailForm" class = "contact-form" (ngSubmit)="sendMail()">
-      <!-- [@expandContact]="isOpen ? 'expanded' : 'collapsed'" -->
       <label>Your name</label>
       <input formControlName = "name" type = "text" name = "name" required = "required">
       <label>Your email</label>
       <input formControlName = "email" type = "email" name = "email" required = "required">
       <label>Your message</label>
-      <textarea cols = "30" formControlName = "message" rows = "10" required = "required"></textarea>
+      <textarea cols = "30" formControlName = "text" rows = "10" required = "required"></textarea>
       <div>
         <button type="submit" [disabled] = "!emailForm.valid">
           <mat-icon>send</mat-icon>&nbsp; Send mail
@@ -36,7 +35,7 @@
 
     <div class = "small-img-container">
       <mat-icon (click) = "prevImage()">arrow_back_ios</mat-icon>
-      <img *ngFor = "let photo of tool?.photos" src = "{{photo.photoSmall}}" alt = "">
+      <img *ngFor = "let photo of tool?.photos; let i = index;" src = "{{photo.photoSmall}}" alt = ""  (click)="enlargePhoto(i)">
       <mat-icon (click) = "nextImage()">arrow_forward_ios</mat-icon>
     </div>
   </div>

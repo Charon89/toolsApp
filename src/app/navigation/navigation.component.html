@@ -3,7 +3,7 @@
     <a routerLink = "/home"><h3>GTA Tools</h3></a>
   </div>
   <ul>
-    <li><a routerLink = "/home">Home</a></li>
+    <li><a routerLink = "/home" (click)="refresh()">Home</a></li>
     <li><a routerLink = "/contacts">Contacts</a></li>
     <li *ngIf="!(token)"><a (click)="openDialog()">Login</a></li>
     <li *ngIf="token" routerLinkActive="active"><a *ngIf="user" routerLink = "/admin">User: {{user?.username}}</a></li>

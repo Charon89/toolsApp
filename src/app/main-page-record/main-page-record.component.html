@@ -2,12 +2,10 @@
 
   <div>
     <img
-      src = "{{tool.photos[0].photoSmall}}"
-      alt = "{{tool.photos[0].photoSmall}}">
+      src = "{{tool.photos[0].photoSmall}}" alt = "">
   </div>
 
   <div class = "record-details">
-
     <div>
       <h1>{{tool.title}}</h1>
     </div>
@@ -21,8 +19,6 @@
       {{tool.postDate | date: 'mediumDate'}}
     </div>
 
-
-    <div class = "description" [innerHTML] = "tool.description"></div>
-    <!--    <span class = "details-link"><a [routerLink] = "['/tool', tool._id]">Details...</a></span>-->
+    <div class = "description" ><p>{{tool.description}}</p></div>
   </div>
 </div>

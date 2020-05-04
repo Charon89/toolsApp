@@ -25,7 +25,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     // const token = localStorage.getItem('token')
-    // return this.http.post(`${this.toolsUrl}/users/logout`, {token});
+  //  return this.http.post(`${this.toolsUrl}/users/logout`);
   }
 
   public getToken(): any {

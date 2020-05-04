@@ -40,16 +40,22 @@ export class NavigationComponent implements OnInit {
       width: '300px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      // this.user = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   // this.user = result;
+    // });
   }
 
   logout() {
     this.auth.logout();
+    this.refresh();
     this.router.navigate(['../home']);
   }
 
+  refresh() {
+    this.router.navigateByUrl('/contacts', {skipLocationChange: true}).then(() => {
+      this.router.navigate(['/home']);
+    });
+  }
 }
 
 // Login component

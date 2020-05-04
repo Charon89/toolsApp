@@ -28,6 +28,10 @@ export class ToolService {
     return this.http.get<Tool>(`${this.toolsUrl}/tools/${id}`);
   }
 
+  contactSeller(data): Observable<any>{
+    return this.http.post(`${this.toolsUrl}/message`, data)
+  }
+
   newTool(data: FormData): Observable<any> {
     return this.http.post<any>(`${this.toolsUrl}/tools`, data);
   }

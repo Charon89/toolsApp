@@ -15,6 +15,7 @@ export class EditToolComponent implements OnInit {
 
   @ViewChild('inputPhoto')
   myInputVariable: ElementRef;
+
   toolId: string;
   confirm = false;
   tool: any;
