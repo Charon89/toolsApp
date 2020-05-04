@@ -40,13 +40,10 @@ export class NavigationComponent implements OnInit {
       width: '300px',
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   // this.user = result;
-    // });
   }
 
   logout() {
-    this.auth.logout();
+    this.auth.logout().subscribe(null, error => console.log(error), () => console.log('Logged out'));
     this.refresh();
     this.router.navigate(['../home']);
   }

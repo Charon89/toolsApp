@@ -24,7 +24,7 @@ export class ToolViewComponent implements OnInit {
   index: number;
   isOpen = false;
 
-  public emailForm: FormGroup;
+  emailForm: FormGroup;
 
   constructor(private toolService: ToolService, private route: ActivatedRoute, private fb: FormBuilder) {
   }
@@ -64,10 +64,23 @@ export class ToolViewComponent implements OnInit {
     this.index = index;
   }
 
+
   // Send e-mail to the customer
   sendMail() {
-    this.toolService.contactSeller(this.emailForm.value);
-    console.log(this.emailForm.value);
+    // this.toolService.contactSeller({
+    //   toolid: this.emailForm.controls.toolid,
+    //   email: this.emailForm.controls.email,
+    //   name: this.emailForm.controls.name,
+    //   text: this.emailForm.controls.text,
+    // });
+    const data = {
+      toolid: this.tool._id,
+      email: this.emailForm.controls.email.value,
+      name: this.emailForm.controls.name.value,
+      text: this.emailForm.controls.text.value
+    };
+    this.toolService.contactSeller({} = data).subscribe(() => console.log(data), error => console.log(error), () => console.log('Mail sent'));
+
     this.emailForm.reset();
   }
 

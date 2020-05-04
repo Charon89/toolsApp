@@ -77,6 +77,35 @@ li a:hover {
   color: white;
 }
 
+/*CATEGORIES*/
+
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 3px 16px 6px rgba(122, 0, 5, 0.1);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  background-color: rgba(43, 43, 43, 0.9);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {  background-color: #2b2b2b;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 @media only screen and (max-width: 680px) {
 
   .nav-container {
@@ -105,7 +134,6 @@ li a:hover {
     text-align: center;
   }
 
-
   .nav-small-logo h3 {
     margin: auto auto;
     padding: 10px 20px;
@@ -118,4 +146,6 @@ li a:hover {
   .btn-search {
     display: none;
   }
+
+
 }

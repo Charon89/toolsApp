@@ -21,11 +21,10 @@ export class AuthService {
     return this.http.post(`${this.toolsUrl}/users/login`, {username, password});
   }
 
-  logout() {
+  logout(): Observable<any> {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    // const token = localStorage.getItem('token')
-  //  return this.http.post(`${this.toolsUrl}/users/logout`);
+    return this.http.post(`${this.toolsUrl}/users/logout`, {});
   }
 
   public getToken(): any {

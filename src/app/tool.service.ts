@@ -29,7 +29,7 @@ export class ToolService {
   }
 
   contactSeller(data): Observable<any>{
-    return this.http.post(`${this.toolsUrl}/message`, data)
+    return this.http.post(`${this.toolsUrl}/message`, data);
   }
 
   newTool(data: FormData): Observable<any> {

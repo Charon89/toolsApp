@@ -3,17 +3,27 @@
     <a routerLink = "/home"><h3>GTA Tools</h3></a>
   </div>
   <ul>
-    <li><a routerLink = "/home" (click)="refresh()">Home</a></li>
+    <li><a routerLink = "/home" (click) = "refresh()">Home</a></li>
+    <li class = "dropdown">
+      <a class = "dropbtn">Categories</a>
+      <div class = "dropdown-content">
+        <a [routerLink] = "['/home']" (click) = "refresh()">All tools</a>
+        <a *ngFor = "let category of categories" [routerLink] = "['/home']"
+           [queryParams] = "{ category: category }">{{category}}</a>
+      </div>
+    </li>
     <li><a routerLink = "/contacts">Contacts</a></li>
-    <li *ngIf="!(token)"><a (click)="openDialog()">Login</a></li>
-    <li *ngIf="token" routerLinkActive="active"><a *ngIf="user" routerLink = "/admin">User: {{user?.username}}</a></li>
-    <li *ngIf="token" routerLinkActive="active" (click)="logout()"><a><span>Log out</span></a></li>
+    <li *ngIf = "!(token)"><a (click) = "openDialog()">Login</a></li>
+    <li *ngIf = "token" routerLinkActive = "active"><a *ngIf = "user" routerLink = "/admin">User: {{user?.username}}</a>
+    </li>
+    <li *ngIf = "token" routerLinkActive = "active" (click) = "logout()"><a><span>Log out</span></a></li>
   </ul>
-  <div class = "search-container">
-    <input class = "search-input" type = "text" placeholder = "Search">
-    <button class = "btn-search">Search</button>
-  </div>
+<!--  <div class = "search-container">-->
+<!--    <input class = "search-input" type = "text" placeholder = "Search">-->
+<!--    <button class = "btn-search">Search</button>-->
+<!--  </div>-->
 </div>
+
 
 <!--<div class = "nav-small">-->
 <!--  <div class = "nav-small-logo">-->

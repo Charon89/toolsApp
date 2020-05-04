@@ -40,6 +40,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {InterceptTokenService} from './intercept-token.service';
 import {JwtModule} from '@auth0/angular-jwt';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -85,6 +86,7 @@ export function tokenGetter() {
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+    MatSidenavModule,
 
     JwtModule.forRoot({
       config: {
@@ -92,7 +94,6 @@ export function tokenGetter() {
         authScheme: 'Bearer'
       }
     })
-
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
