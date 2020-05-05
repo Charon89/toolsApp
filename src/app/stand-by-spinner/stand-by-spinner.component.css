@@ -1,0 +1,8 @@
+mat-progress-spinner, h3{
+  margin: 0 auto;
+  text-align: center;
+}
+
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #c20007;
+}

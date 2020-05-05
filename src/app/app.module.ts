@@ -41,6 +41,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {InterceptTokenService} from './intercept-token.service';
 import {JwtModule} from '@auth0/angular-jwt';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { StandBySpinnerComponent } from './stand-by-spinner/stand-by-spinner.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -64,7 +66,8 @@ export function tokenGetter() {
     EditToolComponent,
     PagingComponent,
     DeleteImageDialogComponent,
-    LoginComponent
+    LoginComponent,
+    StandBySpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +90,7 @@ export function tokenGetter() {
     MatInputModule,
     MatSnackBarModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
 
     JwtModule.forRoot({
       config: {

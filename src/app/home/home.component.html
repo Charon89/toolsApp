@@ -1,4 +1,5 @@
 <div class = "container">
+  <app-stand-by-spinner *ngIf="!tools"></app-stand-by-spinner>
   <app-main-page-record *ngFor="let tool of tools" [tool]="tool"></app-main-page-record>
-  <app-paging (newLimit)="receiveLimit($event)" [skip]="skip" [limit]="limit" [category]="category"></app-paging>
+  <app-paging  *ngIf="tools" (newLimit)="receiveLimit($event)" [skip]="skip" [limit]="limit" [category]="category"></app-paging>
 </div>

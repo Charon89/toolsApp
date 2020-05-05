@@ -1,7 +1,6 @@
 <div class = "container">
 
   <div class = "admin-tools">
-
     <a class = "new-tool-btn" (click) = "openDeleteAllDialog()">
       <mat-icon>delete_forever</mat-icon>
       <span class = "btn-label">&nbsp;Delete ALL</span></a>
@@ -15,7 +14,7 @@
       <span class = "btn-label">&nbsp;New Tool</span></a>
 
   </div>
-
+  <app-stand-by-spinner *ngIf="!dataSource"></app-stand-by-spinner>
   <table mat-table
          [dataSource] = "dataSource" multiTemplateDataRows
          class = "mat-elevation-z8">
