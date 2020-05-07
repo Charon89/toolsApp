@@ -44,6 +44,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { StandBySpinnerComponent } from './stand-by-spinner/stand-by-spinner.component';
 
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -76,6 +78,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    NgxImageZoomModule,
 
     MatExpansionModule,
     MatDividerModule,

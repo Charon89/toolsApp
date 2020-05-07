@@ -110,6 +110,9 @@ input[type=text], input[type=email], textarea {
 .main-img-container img {
   object-fit: scale-down;
 }
+::ng-deep .ngxImageZoomContainer > img{
+  max-height: 300px!important;
+}
 
 /*Small image*/
 .small-img-container {

@@ -12,12 +12,14 @@ import {ToolService} from '../tool.service';
 })
 
 export class NavigationComponent implements OnInit {
+
+  categories = [];
+  dropdownToggler = false;
   user: any = {
     token: '',
     username: 'xXx',
   };
   public token: any;
-  categories = [];
 
   constructor(private dialog: MatDialog, private router: Router, private auth: AuthService, private toolService: ToolService) {
   }
@@ -33,13 +35,13 @@ export class NavigationComponent implements OnInit {
       }
     }, error => console.log(error), () => console.log('Complete'));
   }
-
+   dropToggle(){    this.dropdownToggler = !this.dropdownToggler;   }
+   dropClose(){    this.dropdownToggler = false;   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '300px',
     });
-
   }
 
   logout() {

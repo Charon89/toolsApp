@@ -12,7 +12,7 @@
   </div>
 
   <div class = "contact-container" [@expandContact] = "isOpen ? 'openContactContainer' : 'closeContactContainer'">
-    <form action = "" [formGroup] = "emailForm" class = "contact-form" (ngSubmit)="sendMail()">
+    <form action = "" [formGroup] = "emailForm" class = "contact-form" (ngSubmit) = "sendMail()">
       <label>Your name</label>
       <input formControlName = "name" type = "text" name = "name" required = "required">
       <label>Your email</label>
@@ -20,7 +20,7 @@
       <label>Your message</label>
       <textarea cols = "30" formControlName = "text" rows = "10" required = "required"></textarea>
       <div>
-        <button type="submit" [disabled] = "!emailForm.valid">
+        <button type = "submit" [disabled] = "!emailForm.valid">
           <mat-icon>send</mat-icon>&nbsp; Send mail
         </button>
       </div>
@@ -30,12 +30,22 @@
   <div class = "images-container">
 
     <div class = "main-img-container">
-      <img src = "{{tool?.photos[index].photoLarge}}" alt = "">
+      <!--      <img src = "{{tool?.photos[index].photoLarge}}" alt = "">-->
+      <lib-ngx-image-zoom
+        [thumbImage] = tool?.photos[index].photoLarge
+        [fullImage] = tool?.photos[index].photoLarge
+        [zoomMode] = "'click'"
+        [magnification] = "2"
+        [enableScrollZoom] = "true"
+        [enableLens] = "true"
+        [lensWidth] = "200"
+      ></lib-ngx-image-zoom>
     </div>
 
     <div class = "small-img-container">
       <mat-icon (click) = "prevImage()">arrow_back_ios</mat-icon>
-      <img *ngFor = "let photo of tool?.photos; let i = index;" src = "{{photo.photoSmall}}" alt = ""  (click)="enlargePhoto(i)">
+      <img *ngFor = "let photo of tool?.photos; let i = index;" src = "{{photo.photoSmall}}" alt = ""
+           (click) = "enlargePhoto(i)">
       <mat-icon (click) = "nextImage()">arrow_forward_ios</mat-icon>
     </div>
   </div>

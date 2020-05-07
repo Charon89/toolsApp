@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ToolService} from '../tool.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {distinctUntilChanged} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tool-view',
@@ -13,9 +13,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     trigger('expandContact', [
       state('openContactContainer', style({height: '*'})),
       state('closeContactContainer', style({height: '0px', minHeight: '0'})),
-      // state('collapsed', style({opacity: 0, transform: 'translateY(-400px)'})),
-      // state('expanded', style({opacity: 1, transform: 'translateY(0)'})),
-      // transition('expanded <=> collapsed', animate('400ms cubic-bezier(1, 1, 1, 1)')),
       transition('openContactContainer <=> closeContactContainer', animate('300ms cubic-bezier(1, 1, 1, 1)'))]),]
 })
 export class ToolViewComponent implements OnInit {
@@ -23,12 +20,10 @@ export class ToolViewComponent implements OnInit {
   tool: any;
   index: number;
   isOpen = false;
-
   emailForm: FormGroup;
 
-  constructor(private toolService: ToolService, private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private toolService: ToolService, private route: ActivatedRoute, private fb: FormBuilder, private dialog: MatDialog) {
   }
-
 
   ngOnInit(): void {
 
@@ -64,22 +59,19 @@ export class ToolViewComponent implements OnInit {
     this.index = index;
   }
 
-
   // Send e-mail to the customer
   sendMail() {
-    // this.toolService.contactSeller({
-    //   toolid: this.emailForm.controls.toolid,
-    //   email: this.emailForm.controls.email,
-    //   name: this.emailForm.controls.name,
-    //   text: this.emailForm.controls.text,
-    // });
     const data = {
       toolid: this.tool._id,
       email: this.emailForm.controls.email.value,
       name: this.emailForm.controls.name.value,
       text: this.emailForm.controls.text.value
     };
-    this.toolService.contactSeller({} = data).subscribe(() => console.log(data), error => console.log(error), () => console.log('Mail sent'));
+    this.toolService.contactSeller({} = data).subscribe(
+      {
+        error: error => console.log(error),
+        complete: () => console.log('Mail sent')
+      });
 
     this.emailForm.reset();
   }
@@ -93,4 +85,6 @@ export class ToolViewComponent implements OnInit {
   prevImage() {
     this.index > 0 ? (this.index--) : this.index;
   }
+
+
 }
