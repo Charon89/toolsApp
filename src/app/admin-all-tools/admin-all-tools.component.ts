@@ -3,6 +3,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ToolService} from '../tool.service';
 import {Tool} from '../tool';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-all-tools',
@@ -24,12 +25,13 @@ export class AdminAllToolsComponent implements OnInit {
   confirm = false;
   confirmDeleteAll = false;
 
-  constructor(private toolService: ToolService, public dialog: MatDialog) {
+  constructor(private toolService: ToolService, public dialog: MatDialog, private titleService: Title) {
   }
 
   ngOnInit(): void {
     this.toolService.getAllTools().subscribe(
       data => this.dataSource = data);
+    this.titleService.setTitle('GTA Tools - ADMIN');
   }
 
 // Asking user to delete ONE by ID

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ToolService} from '../tool.service';
 import {Router} from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-new-tool',
@@ -22,10 +23,11 @@ export class NewToolComponent implements OnInit {
     quantity: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private toolService: ToolService, private route: Router) {
+  constructor(private fb: FormBuilder, private toolService: ToolService, private route: Router, private titleService: Title) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('GTA Tools - ADMIN - add new tool');
   }
 
   onSubmit() {

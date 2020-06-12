@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ToolService} from '../tool.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contacts',
@@ -16,10 +17,11 @@ export class ContactsComponent implements OnInit {
     message: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private toolService: ToolService) {
+  constructor(private fb: FormBuilder, private toolService: ToolService, private titleService: Title) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('GTA Tools - Contact');
   }
 
   onSubmit() {

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,9 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'GTA Tools - best prices for new and used tools.';
 
-  constructor() {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('GTA Tools');
   }
+
 
 }

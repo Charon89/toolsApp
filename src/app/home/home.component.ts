@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Tool} from '../tool';
 import {ToolService} from '../tool.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   tools: any;
 
 
-  constructor(private toolService: ToolService, private route: ActivatedRoute) {
+  constructor(private toolService: ToolService, private route: ActivatedRoute, private titleService: Title) {
   }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
         this.toolService.getToolsPage(this.category, this.limit, 0).subscribe(tools => this.tools = tools);
       }
     });
+    this.titleService.setTitle("GTA Tools - Home");
   }
 
   receiveLimit($event) {

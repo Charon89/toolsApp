@@ -4,6 +4,7 @@ import {ToolService} from '../tool.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {stringify} from 'querystring';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -34,11 +35,13 @@ export class EditToolComponent implements OnInit {
     private toolService: ToolService,
     private formBuilder: FormBuilder,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private titleService: Title
   ) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('GTA Tools - ADMIN - edit');
     this.toolId = this.activatedRoute.snapshot.params.id;
     this.toolService.getToolById(this.toolId).subscribe((tool) => {
       this.tool = tool;

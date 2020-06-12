@@ -8,9 +8,9 @@
       <a class = "dropbtn" (click) = "dropToggle()">Categories</a>
 
       <div class = "dropdown-content" [ngClass] = "(dropdownToggler) ? 'dropdown-show' : 'dropdown-hide'">
-        <a [routerLink] = "['/home']" (click) = "dropToggle() ;refresh()">All tools</a>
+        <a [routerLink] = "['/home']" (click) = " setTitle('GTA Tools - Home') ;dropToggle() ;refresh()">All tools</a>
         <a *ngFor = "let category of categories" [routerLink] = "['/home']"
-           [queryParams] = "{ category: category }" (click) = "dropToggle()">{{category}}</a>
+           [queryParams] = "{ category: category }" (click) = "dropToggle(); setTitle(category);">{{category}}</a>
       </div>
 
     </li>

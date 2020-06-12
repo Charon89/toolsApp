@@ -6,7 +6,7 @@
   </ul>
   <mat-divider></mat-divider>
   <ul  *ngFor = "let categorie of categories">
-    <li><a [routerLink] = "['/home']" [queryParams] = "{ category: categorie }">{{categorie}}</a></li>
+    <li><a [routerLink] = "['/home']" [queryParams] = "{ category: categorie }" (click) = "setTitle(categorie)">{{categorie}}</a></li>
     <mat-divider></mat-divider>
   </ul>
 </div>
