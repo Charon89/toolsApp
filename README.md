@@ -1,5 +1,7 @@
 # GTA tools
 
+### A small platform for e-commerce(showroom) with admin panel allowing full control of the whole web app. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## Development server
