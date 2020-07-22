@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  limit = 3;
+  limit = 5;
   skip = 0;
   category: string;
   tools: any;

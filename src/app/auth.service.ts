@@ -39,15 +39,6 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
-    // const token = localStorage.getItem('token');
-    // return !!token; // UNCOMMENT AFTER TEST
-    // if (token) {
-    //   console.log('Token exists');
-    //   return true;
-    // } else {
-    //   console.log('No token');
-    //   return false;
-    // }
   }
 
 }

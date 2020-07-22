@@ -14,14 +14,14 @@ export class ToolService {
 
   getToolsPage(category = null, limit = 0, skip = 0): Observable<any> {
     if (category) {
-      return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}&category=${category}`);
+      return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}&category=${category}&sortBy=postDate:desc`);
     }  else {
-      return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}`);
+      return this.http.get(`${this.toolsUrl}/tools?limit=${limit}&skip=${skip}&sortBy=postDate:desc`);
     }
   }
 
   getAllTools(): Observable<Tool[]> {
-    return this.http.get<Tool[]>(`${this.toolsUrl}/tools`);
+    return this.http.get<Tool[]>(`${this.toolsUrl}/tools?sortBy=postDate:desc`);
   }
 
   getToolById(id: string): Observable<Tool> {
